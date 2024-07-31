@@ -1,5 +1,7 @@
 """Compute vtables of native (extension) classes."""
 
+from __future__ import annotations
+
 import itertools
 
 from mypyc.ir.class_ir import ClassIR, VTableEntries, VTableMethod
@@ -8,7 +10,8 @@ from mypyc.sametype import is_same_method_signature
 
 def compute_vtable(cls: ClassIR) -> None:
     """Compute the vtable structure for a class."""
-    if cls.vtable is not None: return
+    if cls.vtable is not None:
+        return
 
     if not cls.is_generated:
         cls.has_dict = any(x.inherits_python for x in cls.mro)
@@ -37,7 +40,7 @@ def compute_vtable(cls: ClassIR) -> None:
     for t in [cls] + cls.traits:
         for fn in itertools.chain(t.methods.values()):
             # TODO: don't generate a new entry when we overload without changing the type
-            if fn == cls.get_method(fn.name):
+            if fn == cls.get_method(fn.name, prefer_method=True):
                 cls.vtable[fn.name] = len(entries)
                 # If the class contains a glue method referring to itself, that is a
                 # shadow glue method to support interpreted subclasses.
@@ -57,18 +60,23 @@ def specialize_parent_vtable(cls: ClassIR, parent: ClassIR) -> VTableEntries:
     for entry in parent.vtable_entries:
         # Find the original method corresponding to this vtable entry.
         # (This may not be the method in the entry, if it was overridden.)
-        orig_parent_method = entry.cls.get_method(entry.name)
+        orig_parent_method = entry.cls.get_method(entry.name, prefer_method=True)
         assert orig_parent_method
-        method_cls = cls.get_method_and_class(entry.name)
+        method_cls = cls.get_method_and_class(entry.name, prefer_method=True)
         if method_cls:
             child_method, defining_cls = method_cls
             # TODO: emit a wrapper for __init__ that raises or something
-            if (is_same_method_signature(orig_parent_method.sig, child_method.sig)
-                    or orig_parent_method.name == '__init__'):
+            if (
+                is_same_method_signature(orig_parent_method.sig, child_method.sig)
+                or orig_parent_method.name == "__init__"
+            ):
                 entry = VTableMethod(entry.cls, entry.name, child_method, entry.shadow_method)
             else:
-                entry = VTableMethod(entry.cls, entry.name,
-                                     defining_cls.glue_methods[(entry.cls, entry.name)],
-                                     entry.shadow_method)
+                entry = VTableMethod(
+                    entry.cls,
+                    entry.name,
+                    defining_cls.glue_methods[(entry.cls, entry.name)],
+                    entry.shadow_method,
+                )
         updated.append(entry)
     return updated

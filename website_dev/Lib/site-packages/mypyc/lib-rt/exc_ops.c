@@ -7,7 +7,7 @@
 
 void CPy_Raise(PyObject *exc) {
     if (PyObject_IsInstance(exc, (PyObject *)&PyType_Type)) {
-        PyObject *obj = PyObject_CallFunctionObjArgs(exc, NULL);
+        PyObject *obj = PyObject_CallNoArgs(exc);
         if (!obj)
             return;
         PyErr_SetObject(exc, obj);
@@ -75,7 +75,7 @@ void CPy_RestoreExcInfo(tuple_T3OOO info) {
 }
 
 bool CPy_ExceptionMatches(PyObject *type) {
-    return PyErr_GivenExceptionMatches(CPy_ExcState()->exc_type, type);
+    return PyErr_GivenExceptionMatches((PyObject *)Py_TYPE(CPy_ExcState()->exc_value), type);
 }
 
 PyObject *CPy_GetExcValue(void) {
@@ -140,7 +140,7 @@ out:
 // Get the type of a value as a string, expanding tuples to include
 // all the element types.
 static PyObject *CPy_FormatTypeName(PyObject *value) {
-    if (value == Py_None) {
+    if (Py_IsNone(value)) {
         return PyUnicode_FromString("None");
     }
 
@@ -189,38 +189,16 @@ void CPy_TypeError(const char *expected, PyObject *value) {
     }
 }
 
-// These functions are basically exactly PyCode_NewEmpty and
-// _PyTraceback_Add which are available in all the versions we support.
-// We're continuing to use them because we'll probably optimize them later.
-static PyCodeObject *CPy_CreateCodeObject(const char *filename, const char *funcname, int line) {
-    PyObject *filename_obj = PyUnicode_FromString(filename);
-    PyObject *funcname_obj = PyUnicode_FromString(funcname);
-    PyObject *empty_bytes = PyBytes_FromStringAndSize("", 0);
-    PyObject *empty_tuple = PyTuple_New(0);
-    PyCodeObject *code_obj = NULL;
-    if (filename_obj == NULL || funcname_obj == NULL || empty_bytes == NULL
-        || empty_tuple == NULL) {
-        goto Error;
-    }
-    code_obj = PyCode_New(0, 0, 0, 0, 0,
-                          empty_bytes,
-                          empty_tuple,
-                          empty_tuple,
-                          empty_tuple,
-                          empty_tuple,
-                          empty_tuple,
-                          filename_obj,
-                          funcname_obj,
-                          line,
-                          empty_bytes);
-  Error:
-    Py_XDECREF(empty_bytes);
-    Py_XDECREF(empty_tuple);
-    Py_XDECREF(filename_obj);
-    Py_XDECREF(funcname_obj);
-    return code_obj;
-}
+// The PyFrameObject type definition (struct _frame) has been moved
+// to the internal C API: to the pycore_frame.h header file.
+// https://github.com/python/cpython/pull/31530
+#if PY_VERSION_HEX >= 0x030b00a6
+#include "internal/pycore_frame.h"
+#endif
 
+// This function is basically exactly the same with _PyTraceback_Add
+// which is available in all the versions we support.
+// We're continuing to use this because we'll probably optimize this later.
 void CPy_AddTraceback(const char *filename, const char *funcname, int line, PyObject *globals) {
     PyObject *exc, *val, *tb;
     PyThreadState *thread_state = PyThreadState_GET();
@@ -233,7 +211,7 @@ void CPy_AddTraceback(const char *filename, const char *funcname, int line, PyOb
     // FS encoding, which could have a decoder in Python. We don't do
     // that so *that* doesn't apply to us.)
     PyErr_Fetch(&exc, &val, &tb);
-    PyCodeObject *code_obj = CPy_CreateCodeObject(filename, funcname, line);
+    PyCodeObject *code_obj = PyCode_NewEmpty(filename, funcname, line);
     if (code_obj == NULL) {
         goto error;
     }
@@ -253,4 +231,19 @@ void CPy_AddTraceback(const char *filename, const char *funcname, int line, PyOb
 
 error:
     _PyErr_ChainExceptions(exc, val, tb);
+}
+
+CPy_NOINLINE
+void CPy_TypeErrorTraceback(const char *filename, const char *funcname, int line,
+                            PyObject *globals, const char *expected, PyObject *value) {
+    CPy_TypeError(expected, value);
+    CPy_AddTraceback(filename, funcname, line, globals);
+}
+
+void CPy_AttributeError(const char *filename, const char *funcname, const char *classname,
+                        const char *attrname, int line, PyObject *globals) {
+    char buf[500];
+    snprintf(buf, sizeof(buf), "attribute '%.200s' of '%.200s' undefined", attrname, classname);
+    PyErr_SetString(PyExc_AttributeError, buf);
+    CPy_AddTraceback(filename, funcname, line, globals);
 }

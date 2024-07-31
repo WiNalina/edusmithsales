@@ -1,9 +1,19 @@
-from typing import Dict, List, Set
+from __future__ import annotations
 
 from mypy.nodes import (
-    Decorator, Expression, FuncDef, FuncItem, LambdaExpr, NameExpr, SymbolNode, Var, MemberExpr
+    Decorator,
+    Expression,
+    FuncDef,
+    FuncItem,
+    LambdaExpr,
+    MemberExpr,
+    MypyFile,
+    NameExpr,
+    SymbolNode,
+    Var,
 )
 from mypy.traverser import TraverserVisitor
+from mypyc.errors import Errors
 
 
 class PreBuildVisitor(TraverserVisitor):
@@ -20,35 +30,47 @@ class PreBuildVisitor(TraverserVisitor):
     The main IR build pass uses this information.
     """
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        errors: Errors,
+        current_file: MypyFile,
+        decorators_to_remove: dict[FuncDef, list[int]],
+    ) -> None:
         super().__init__()
         # Dict from a function to symbols defined directly in the
         # function that are used as non-local (free) variables within a
         # nested function.
-        self.free_variables = {}  # type: Dict[FuncItem, Set[SymbolNode]]
+        self.free_variables: dict[FuncItem, set[SymbolNode]] = {}
 
         # Intermediate data structure used to find the function where
         # a SymbolNode is declared. Initially this may point to a
         # function nested inside the function with the declaration,
         # but we'll eventually update this to refer to the function
         # with the declaration.
-        self.symbols_to_funcs = {}  # type: Dict[SymbolNode, FuncItem]
+        self.symbols_to_funcs: dict[SymbolNode, FuncItem] = {}
 
         # Stack representing current function nesting.
-        self.funcs = []  # type: List[FuncItem]
+        self.funcs: list[FuncItem] = []
 
         # All property setters encountered so far.
-        self.prop_setters = set()  # type: Set[FuncDef]
+        self.prop_setters: set[FuncDef] = set()
 
         # A map from any function that contains nested functions to
         # a set of all the functions that are nested within it.
-        self.encapsulating_funcs = {}  # type: Dict[FuncItem, List[FuncItem]]
+        self.encapsulating_funcs: dict[FuncItem, list[FuncItem]] = {}
 
         # Map nested function to its parent/encapsulating function.
-        self.nested_funcs = {}  # type: Dict[FuncItem, FuncItem]
+        self.nested_funcs: dict[FuncItem, FuncItem] = {}
 
         # Map function to its non-special decorators.
-        self.funcs_to_decorators = {}  # type: Dict[FuncDef, List[Expression]]
+        self.funcs_to_decorators: dict[FuncDef, list[Expression]] = {}
+
+        # Map function to indices of decorators to remove
+        self.decorators_to_remove: dict[FuncDef, list[int]] = decorators_to_remove
+
+        self.errors: Errors = errors
+
+        self.current_file: MypyFile = current_file
 
     def visit_decorator(self, dec: Decorator) -> None:
         if dec.decorators:
@@ -59,11 +81,22 @@ class PreBuildVisitor(TraverserVisitor):
             # mypy. Functions decorated only by special decorators
             # (and property setters) are not treated as decorated
             # functions by the IR builder.
-            if isinstance(dec.decorators[0], MemberExpr) and dec.decorators[0].name == 'setter':
+            if isinstance(dec.decorators[0], MemberExpr) and dec.decorators[0].name == "setter":
                 # Property setters are not treated as decorated methods.
                 self.prop_setters.add(dec.func)
             else:
-                self.funcs_to_decorators[dec.func] = dec.decorators
+                decorators_to_store = dec.decorators.copy()
+                if dec.func in self.decorators_to_remove:
+                    to_remove = self.decorators_to_remove[dec.func]
+
+                    for i in reversed(to_remove):
+                        del decorators_to_store[i]
+                    # if all of the decorators are removed, we shouldn't treat this as a decorated
+                    # function because there aren't any decorators to apply
+                    if not decorators_to_store:
+                        return
+
+                self.funcs_to_decorators[dec.func] = decorators_to_store
         super().visit_decorator(dec)
 
     def visit_func_def(self, fdef: FuncItem) -> None:
@@ -129,12 +162,10 @@ class PreBuildVisitor(TraverserVisitor):
     def is_parent(self, fitem: FuncItem, child: FuncItem) -> bool:
         # Check if child is nested within fdef (possibly indirectly
         # within multiple nested functions).
-        if child in self.nested_funcs:
-            parent = self.nested_funcs[child]
-            if parent == fitem:
-                return True
-            return self.is_parent(fitem, parent)
-        return False
+        if child not in self.nested_funcs:
+            return False
+        parent = self.nested_funcs[child]
+        return parent == fitem or self.is_parent(fitem, parent)
 
     def add_free_variable(self, symbol: SymbolNode) -> None:
         # Find the function where the symbol was (likely) first declared,
