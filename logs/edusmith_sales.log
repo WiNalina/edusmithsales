@@ -1,0 +1,152 @@
+2021-03-31 19:12:08,775 ERROR: Exception on /students_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column student.company_name does not exist
+LINE 1: ...student_name, student.name_th AS student_name_th, student.co...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 86, in students_local
+    for r in student_res:
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3533, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column student.company_name does not exist
+LINE 1: ...student_name, student.name_th AS student_name_th, student.co...
+                                                             ^
+
+[SQL: SELECT student.id AS student_id, student.streak_id AS student_streak_id, student.universal_id AS student_universal_id, student.name AS student_name, student.name_th AS student_name_th, student.company_name AS student_company_name, student.company_tax_id AS student_company_tax_id, student.company_address AS student_company_address, student.student_country AS student_student_country, student.school AS student_school, student.graduate_year AS student_graduate_year, student.mobile_num AS student_mobile_num, student.email AS student_email, student.line AS student_line, student.address AS student_address, student.tax_id AS student_tax_id, student.dad_name AS student_dad_name, student.dad_mobile_num AS student_dad_mobile_num, student.dad_email AS student_dad_email, student.dad_line AS student_dad_line, student.mom_name AS student_mom_name, student.mom_mobile_num AS student_mom_mobile_num, student.mom_email AS student_mom_email, student.mom_line AS student_mom_line, student.know_us_from AS student_know_us_from, student.total_value AS student_total_value 
+FROM student 
+WHERE student.student_country = %(student_country_1)s]
+[parameters: {'student_country_1': 'Thailand'}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2021-03-31 19:12:18,327 ERROR: Exception on /students_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column student.company_name does not exist
+LINE 1: ...student_name, student.name_th AS student_name_th, student.co...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 86, in students_local
+    for r in student_res:
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3533, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column student.company_name does not exist
+LINE 1: ...student_name, student.name_th AS student_name_th, student.co...
+                                                             ^
+
+[SQL: SELECT student.id AS student_id, student.streak_id AS student_streak_id, student.universal_id AS student_universal_id, student.name AS student_name, student.name_th AS student_name_th, student.company_name AS student_company_name, student.company_tax_id AS student_company_tax_id, student.company_address AS student_company_address, student.student_country AS student_student_country, student.school AS student_school, student.graduate_year AS student_graduate_year, student.mobile_num AS student_mobile_num, student.email AS student_email, student.line AS student_line, student.address AS student_address, student.tax_id AS student_tax_id, student.dad_name AS student_dad_name, student.dad_mobile_num AS student_dad_mobile_num, student.dad_email AS student_dad_email, student.dad_line AS student_dad_line, student.mom_name AS student_mom_name, student.mom_mobile_num AS student_mom_mobile_num, student.mom_email AS student_mom_email, student.mom_line AS student_mom_line, student.know_us_from AS student_know_us_from, student.total_value AS student_total_value 
+FROM student 
+WHERE student.student_country = %(student_country_1)s]
+[parameters: {'student_country_1': 'Thailand'}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2021-04-01 12:03:18,660 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-04-02 17:02:40,873 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-04-08 16:21:04,474 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-04-08 21:10:29,927 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-04-08 21:23:56,025 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-04-08 21:40:24,141 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-04-21 22:42:02,432 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-04-30 21:18:16,741 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-01 11:18:07,973 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-01 11:20:09,923 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-01 11:20:21,396 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-01 18:11:28,260 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-01 18:17:51,220 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-01 18:18:07,204 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-01 19:19:33,018 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-23 21:25:58,543 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-23 21:33:58,565 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-23 21:42:28,030 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-05-23 21:44:47,689 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-08-14 20:00:14,852 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-08-14 20:01:27,277 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-08-25 11:43:40,289 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-08-25 11:44:47,601 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-03 15:19:04,990 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-03 15:20:37,782 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-03 15:20:57,589 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-03 15:25:21,291 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-03 15:26:50,329 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-11 22:19:56,279 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-11 22:21:05,854 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-11 22:23:24,658 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2021-09-11 22:24:29,636 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2022-01-10 10:51:52,724 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]
+2022-01-17 16:46:16,498 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:132]

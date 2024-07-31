@@ -1,0 +1,71 @@
+{% if basic_access_permission == true %}
+    {% extends "base.html" %}
+{% else %}
+    {% extends "base_basic.html" %}
+{% endif %}
+
+{% block scripts %}
+    <style>
+    .row {
+        display: flex;
+    }
+    
+    .column {
+        flex: 50%;
+    }
+    </style>
+{% endblock %}
+
+{% block app_content %}
+    <h1>Hi, {{ current_user.username }}! Welcome to EduSmith Sales Website. </h1>
+    
+    {% if current_user.last_login %}
+    <p>Last login on: {{ current_user.last_login | datetimefilter }}</p>
+    {% endif %}
+    
+    <hr>
+        <div class="row">
+            <div class="column">
+                {% if basic_access_permission == true %}
+                <h3>Main Section</h3>
+                <a href="{{ url_for('main.add_transaction') }}">Create An Invoice/ A Receipt</a>
+                <br><a href="{{ url_for('main.local_transactions') }}">Previous Transaction Records</a>
+                <br><a href="{{ url_for('main.local_student_lookup') }}">Local Student Lookup</a>
+                {% endif %}
+                
+                {% if download_accounting_permission == true %}
+                <h3>Document Download Section</h3>
+                <a href="{{ url_for('main.accounting_record_download_sales')}}">Download Sales & Accounting Records</a>
+                <br><a href="{{ url_for('main.accounting_record_download_accounting')}}">Download Amortization Records</a>
+                <br><a href="{{ url_for('main.refund_download')}}">Download Credit/Refund Records</a>
+                {% endif %}
+
+                <h3>Credit/Refund Section</h3>
+                {% if change_service_permission == true %}
+                <a href="{{ url_for('main.credit_transfer')}}">Transfer Student Credit</a>
+                {% endif %}
+            </div>
+            
+            <div class="column">
+                {% if change_service_permission == true %}
+                    <h3>Service Section</h3>
+                    <a href="{{ url_for('main.service_lookup') }}">Edit Existing Service's Information</a>
+                    <br><a href="{{ url_for('main.add_service_global') }}">Add A New Service</a>
+
+                    <h3>Teacher Section</h3>
+                    <a href="{{ url_for('main.teacher_lookup') }}">Edit Existing Teacher's Information</a>
+                    <br><a href="{{ url_for('main.add_teacher_global') }}">Add A New Teacher</a>
+
+                    <h3>Office Section</h3>
+                    <a href="{{ url_for('main.office_lookup') }}">Edit Existing Office's Information</a>
+                    <br><a href="{{ url_for('main.add_office') }}">Add A New Office</a>
+
+                    <h3>Card Machine Section</h3>
+                    <a href="{{ url_for('main.card_machine_lookup') }}">Edit Card Machine Information</a>
+                    <br><a href="{{ url_for('main.add_card_machine_global') }}">Add A New Card Machine</a>
+                {% endif %}
+            </div>
+        </p>
+        </div>
+    
+{% endblock %}

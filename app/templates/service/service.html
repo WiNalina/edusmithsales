@@ -1,0 +1,186 @@
+{% extends "base_wo_ending_script.html" %}
+
+{% block app_content %}
+    {% block scripts %}
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>
+        $( function() {
+          $( ".controlgroup" ).controlgroup()
+          $( ".controlgroup-vertical" ).controlgroup({
+            "direction": "vertical"
+          });
+        } );
+        </script>
+
+      <script>
+        $(document).ready(function() {
+            var category = $('#category').val();
+            var subcategory = $('#subcategory').val();
+            $.getJSON(
+                '/get_service_subcategory' + '/' + category,
+                function(data) {
+                // Add new items
+                if(subcategory !== null && subcategory !== ''){
+                  var option_item = '<option value="' + subcategory + '">' + subcategory + '</option>'
+                  $('#subcategory').append(option_item);
+                  $.each(data, function(key, val) {
+                    if(val !== subcategory){
+                      var option_item = '<option value="' + val + '">' + val + '</option>'
+                      $('#subcategory').append(option_item);
+                    }
+                  });
+                }
+                else{
+                  $.each(data, function(key, val) {
+                    var option_item = '<option value="' + val + '">' + val + '</option>'
+                    $('#subcategory').append(option_item);
+                  });
+                }  
+              }
+            );
+
+          $('#non_vat_same_as_name_flag').click(function() {
+              if($('#non_vat_same_as_name_flag').is(':checked')) {
+                  var standard_name = $("#name").val()
+                  $("#non_vat_name").val(standard_name);
+              }
+          });
+
+          $('#vat_same_as_name_flag').click(function() {
+              if($('#vat_same_as_name_flag').is(':checked')) {
+                  var standard_name = $("#name").val()
+                  $("#vat_name").val(standard_name);
+              }
+          });
+
+          $('#category').change(function() {
+  
+            var category = $('#category').val();
+  
+            // Make Ajax Request and expect JSON-encoded data
+            $.getJSON(
+              '/get_service_subcategory' + '/' + category,
+              function(data) {
+  
+                // Remove old options
+                $('#subcategory').find('option').remove();                                
+  
+                // Add new items
+                $.each(data, function(key, val) {
+                  var option_item = '<option value="' + val + '">' + val + '</option>'
+                  $('#subcategory').append(option_item);
+                });
+              }
+            );
+          });
+        });
+      </script>
+    {% endblock %}
+
+    <body>
+
+        <h1> {{action}} Service</h1>
+
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.category.label }}<br>
+                {{ form.category }}<br>
+                {% for error in form.category.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ form.subcategory.label }}<br>
+                {{ form.subcategory }}<br>
+                {% for error in form.subcategory.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ form.name.label }}<br>
+                {{ form.name(size = 70) }}<br>
+                {% for error in form.name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <fieldset>
+              <legend>Non-VAT Name</legend>
+              <div class="controlgroup">
+
+                <p>
+                  {{ form.non_vat_name.label }}<br>
+                  {{ form.non_vat_name(size = 70) }}<br>
+                  {% for error in form.non_vat_name.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                  {% endfor %}
+                </p>
+
+                <p>
+                  {{ form.non_vat_same_as_name_flag.label }}<br>
+                  {{ form.non_vat_same_as_name_flag(size = 70) }}<br>
+                  {% for error in form.non_vat_same_as_name_flag.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                  {% endfor %}
+                </p>
+
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>VAT Name</legend>
+              <div class="controlgroup">
+              <p>
+                {{ form.vat_name.label }}<br>
+                {{ form.vat_name(size = 70) }}<br>
+                {% for error in form.vat_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </p>
+
+              <p>
+                {{ form.vat_same_as_name_flag.label }}<br>
+                {{ form.vat_same_as_name_flag(size = 70) }}<br>
+                {% for error in form.vat_same_as_name_flag.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </p>
+              </div>
+            </fieldset>
+
+            <p>
+                {{ form.country.label }}<br>
+                {{ form.country }}<br>
+                {% for error in form.country.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ form.vat_proportion.label }}<br>
+                {{ form.vat_proportion }}<br>
+                {% for error in form.vat_proportion.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ form.price.label }}<br>
+                {{ form.price }}<br>
+                {% for error in form.price.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <br>
+            
+            
+            <p>{{ form.submit() }}</p>
+        </form>
+    </body>
+
+{% endblock %}

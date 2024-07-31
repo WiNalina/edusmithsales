@@ -1,0 +1,67 @@
+2021-02-17 13:34:33,153 ERROR: Exception on /services_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column service.display_name does not exist
+LINE 1: ...AS service_country, service.name AS service_name, service.di...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 729, in services_local
+    list_services = [r.as_dict() for r in service_res]
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3533, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column service.display_name does not exist
+LINE 1: ...AS service_country, service.name AS service_name, service.di...
+                                                             ^
+
+[SQL: SELECT service.id AS service_id, service.country AS service_country, service.name AS service_name, service.display_name AS service_display_name, service.category AS service_category, service.subcategory AS service_subcategory, service.vat_proportion AS service_vat_proportion, service.price AS service_price, service.vat_name AS service_vat_name, service.non_vat_name AS service_non_vat_name, service.note AS service_note 
+FROM service 
+WHERE service.country = %(country_1)s]
+[parameters: {'country_1': 'Thailand'}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2021-02-17 13:39:58,307 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 13:39:58,308 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 17:47:41,287 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 17:47:41,288 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 17:53:44,964 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 17:53:44,965 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:19:42,321 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:19:42,322 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]

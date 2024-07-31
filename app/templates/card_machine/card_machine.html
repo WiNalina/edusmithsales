@@ -1,0 +1,47 @@
+{% extends "base_wo_ending_script.html" %}
+
+{% block app_content %}
+    <body>
+
+        <h1> {{action}} Card Machine</h1>
+
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            
+            <p>
+                {{ form.bank_name.label }}<br>
+                {{ form.bank_name() }}<br>
+                {% for error in form.bank_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+    
+            <p>
+                {{ form.reference_name.label }}<br>
+                {{ form.reference_name() }}<br>
+                {% for error in form.reference_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+    
+            <p>
+                {{ form.machine_code_number.label }}<br>
+                {{ form.machine_code_number() }}<br>
+                {% for error in form.machine_code_number.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+    
+            <p>
+                {{ form.country.label }}<br>
+                {{ form.country() }}<br>
+                {% for error in form.country.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            
+            <p>{{ form.submit() }}</p>
+        </form>
+    </body>
+
+{% endblock %}

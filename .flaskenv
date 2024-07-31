@@ -1,0 +1,2 @@
+FLASK_APP=mainpage.py
+FLASK_RUN_RELOAD=False

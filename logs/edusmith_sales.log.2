@@ -1,0 +1,118 @@
+2021-02-17 18:19:52,588 ERROR: Exception on /transaction/138 [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.ProgrammingError: can't adapt type 'FloatField'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 622, in edit_transaction
+    array_paid_value, array_this_time_count, preview_filename = save_transaction_changes(transaction, form, new=False, submit=True)
+  File "C:\Users\never\website\app\main\routes.py", line 328, in save_transaction_changes
+    service_2 = Service.query.filter_by(name=form.service_2_name.data, country=current_user.user_country).first_or_404()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 430, in first_or_404
+    rv = self.first()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3402, in first
+    ret = list(self[0:1])
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3176, in __getitem__
+    return list(res)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3507, in __iter__
+    self.session._autoflush()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1628, in _autoflush
+    util.raise_(e, with_traceback=sys.exc_info()[2])
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1617, in _autoflush
+    self.flush()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2523, in flush
+    self._flush(objects)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2664, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2624, in _flush
+    flush_context.execute()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 589, in execute
+    uow,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\persistence.py", line 236, in save_obj
+    update,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\persistence.py", line 995, in _emit_update_statements
+    statement, multiparams
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+(psycopg2.ProgrammingError) can't adapt type 'FloatField'
+[SQL: UPDATE transaction SET latest_timestamp=%(latest_timestamp)s, service_1_count=%(service_1_count)s, service_1_discount_value=%(service_1_discount_value)s WHERE transaction.id = %(transaction_id)s]
+[parameters: {'latest_timestamp': datetime.datetime(2021, 2, 17, 11, 19, 52, 587184), 'service_1_count': 19.5, 'service_1_discount_value': <wtforms.fields.core.FloatField object at 0x0000018801D60088>, 'transaction_id': 138}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2021-02-17 18:20:36,391 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:20:36,392 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:24:56,007 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:24:56,008 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:25:09,733 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:25:09,736 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:29:01,698 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:29:01,699 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:34:29,384 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:34:29,384 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:35:33,949 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:35:33,949 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:35:39,825 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:35:39,829 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:35:55,316 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:35:55,317 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:36:03,788 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:36:03,789 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:36:54,265 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:36:54,266 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:36:59,222 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:36:59,223 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:37:48,136 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:37:48,137 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:37:51,528 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:37:51,528 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:38:35,144 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:38:35,145 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:38:40,816 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:38:40,817 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 18:39:17,912 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 18:39:17,913 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 19:11:48,360 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 19:11:48,361 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 19:14:51,248 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 19:14:51,249 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]

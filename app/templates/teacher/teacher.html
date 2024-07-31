@@ -1,0 +1,31 @@
+{% extends "base_wo_ending_script.html" %}
+
+{% block app_content %}
+    <body>
+
+        <h1> {{action}} Teacher</h1>
+
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+
+            <p>
+                {{ form.name.label }}<br>
+                {{ form.name(size = 70) }}<br>
+                {% for error in form.name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ form.country.label }}<br>
+                {{ form.country }}<br>
+                {% for error in form.country.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            
+            <p>{{ form.submit() }}</p>
+        </form>
+    </body>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <h1>Please select the dates for downloading the credit-related records. </h1><br>
+    <form class="form-inline" action="" method="{{ method | d("POST") }}">
+        {{ form.hidden_tag() }}
+        
+        <b>Choose Starting Date: </b>
+        {{ form.start_date_select }} &nbsp
+        {% for error in form.start_date_select.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %} &nbsp; <br><br>
+
+        <b>Choose Ending Date:</b>
+        {{ form.end_date_select }} &nbsp
+        {% for error in form.end_date_select.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %} &nbsp; <br><br>
+
+        {{ form.submit() }}
+        
+    </form>
+    
+{% endblock %}

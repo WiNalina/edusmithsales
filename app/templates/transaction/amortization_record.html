@@ -1,0 +1,323 @@
+{% extends "base_wo_ending_script.html" %}
+
+{% block app_content %}
+    {% block scripts %}
+        <style>
+            td, th {
+                border: 1px solid #dddddd;
+                margin: auto;
+                padding: 5px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+        </style>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+    
+        <script>
+            $(document).ready(function(){
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                $(window).keydown(function(event){
+                    if(event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                    }
+                });
+
+                var date_1 = new Date($('#start_date').val());
+                document.getElementById("date_1").innerHTML = months[date_1.getMonth()] + ", " + date_1.getFullYear();
+
+                var date_2 = new Date(date_1.getFullYear(), date_1.getMonth() + 1, 1)
+                document.getElementById("date_2").innerHTML = months[date_2.getMonth()] + ", " + date_2.getFullYear();
+
+                var date_3 = new Date(date_1.getFullYear(), date_1.getMonth() + 2, 1)
+                document.getElementById("date_3").innerHTML = months[date_3.getMonth()] + ", " + date_3.getFullYear();
+
+                var date_4 = new Date(date_1.getFullYear(), date_1.getMonth() + 3, 1)
+                document.getElementById("date_4").innerHTML = months[date_4.getMonth()] + ", " + date_4.getFullYear();
+
+                var date_5 = new Date(date_1.getFullYear(), date_1.getMonth() + 4, 1)
+                document.getElementById("date_5").innerHTML = months[date_5.getMonth()] + ", " + date_5.getFullYear();
+                
+                var date_6 = new Date(date_1.getFullYear(), date_1.getMonth() + 5, 1)
+                document.getElementById("date_6").innerHTML = months[date_6.getMonth()] + ", " + date_6.getFullYear();
+                
+
+                $('#start_date').change(function() {
+                    var date_1 = new Date($('#start_date').val());
+                    document.getElementById("date_1").innerHTML = months[date_1.getMonth()] + ", " + date_1.getFullYear() + "</span>";
+
+                    var date_2 = new Date(date_1.getFullYear(), date_1.getMonth() + 1, 1)
+                    document.getElementById("date_2").innerHTML = months[date_2.getMonth()] + ", " + date_2.getFullYear();
+
+                    var date_3 = new Date(date_1.getFullYear(), date_1.getMonth() + 2, 1)
+                    document.getElementById("date_3").innerHTML = months[date_3.getMonth()] + ", " + date_3.getFullYear();
+
+                    var date_4 = new Date(date_1.getFullYear(), date_1.getMonth() + 3, 1)
+                    document.getElementById("date_4").innerHTML = months[date_4.getMonth()] + ", " + date_4.getFullYear();
+
+                    var date_5 = new Date(date_1.getFullYear(), date_1.getMonth() + 4, 1)
+                    document.getElementById("date_5").innerHTML = months[date_5.getMonth()] + ", " + date_5.getFullYear();
+                    
+                    var date_6 = new Date(date_1.getFullYear(), date_1.getMonth() + 5, 1)
+                    document.getElementById("date_6").innerHTML = months[date_6.getMonth()] + ", " + date_6.getFullYear();
+
+                });
+
+                if($('#amortization_type').val() == 'Constant'){
+                    $('.div_end_date').show();
+                    $('.div_table_month').hide();
+                    $('.hours_per_week').hide();
+                }
+                else if ($('#amortization_type').val() == 'Custom'){
+                    $('.div_table_month').show();
+                    $('.div_end_date').hide();
+                    $('.hours_per_week').hide();
+                }
+                else{
+                    $('.hours_per_week').show();
+                    $('.div_table_month').hide();
+                    $('.div_end_date').hide();
+                }
+
+                $('#amortization_type').change(function() {
+                    if($('#amortization_type').val() == 'Constant'){
+                        $('.div_end_date').show();
+                        $('.div_table_month').hide();
+                        $('.hours_per_week').hide();
+                    }
+                    else if ($('#amortization_type').val() == 'Custom'){
+                        $('.div_table_month').show();
+                        $('.div_end_date').hide();
+                        $('.hours_per_week').hide();
+                    }
+                    else{
+                        $('.hours_per_week').show();
+                        $('.div_table_month').hide();
+                        $('.div_end_date').hide();
+                    }
+                });
+            });
+        </script>
+    {% endblock %}
+
+    <h1> Amortization Info Edit </h1>
+    
+    {% if accounting_record %}
+    <div class="table-responsive">
+        <table id="student" class="table table-bordered table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if accounting_record.name %}
+                <tr valign="top">
+                    <td><b> Student Name </b></td>
+                    <td>{{ accounting_record.name | missingfilter }}</td>
+                </tr>
+                {% endif %}
+
+                {% if accounting_record.code_number %}
+                <tr>
+                    <td><b>Receipt Number</b></td>
+                    <td>{{ accounting_record.code_number | missingfilter }}</td>
+                </tr>
+                {% endif %}
+
+                {% if accounting_record.service %}
+                <tr>
+                    <td><b>Service Name</b></td>
+                    <td>{{ accounting_record.service | missingfilter }}</td>
+                </tr>
+                {% endif %}
+
+                {% if accounting_record.total_amount %}
+                <tr>
+                    <td><b>Value</b></td>
+                    <td>{{ accounting_record.total_amount | missingfilter }}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    <hr>
+    
+    <section>
+        <form class="form-inline" method="POST">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.amortization_type.label() }}<br>
+                {{ form.amortization_type() }}
+                {% for error in form.amortization_type.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <div class="div_dates">
+                <p>
+                    {{ form.start_date.label(class = "service_dates") }}<br>
+                    {{ form.start_date(size=80, class = "service_dates") }}
+                    {% for error in form.start_date.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+
+                <div class="div_end_date">
+                    <p>
+                        {{ form.end_date.label(class = "service_dates") }}<br>
+                        {{ form.end_date(size=80, class = "service_dates") }}
+                        {% for error in form.end_date.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+
+            <div class="hours_per_week">
+                <p>
+                    {{ form.total_hours.label(class = "hrs_per_week") }} <br>
+                    {{ form.total_hours(size=5, class = "hrs_per_week") }} <br> <br>
+                    {% for error in form.total_hours.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>No. of Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday </td>
+                                <td>{{ form.monday_hrs(size=5, class = "hrs_per_week") }}
+                                    {% for error in form.monday_hrs.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}</td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>{{ form.tuesday_hrs(size=5, class = "hrs_per_week") }}
+                                    {% for error in form.tuesday_hrs.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}</td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>{{ form.wednesday_hrs(size=5, class = "hrs_per_week") }}
+                                    {% for error in form.wednesday_hrs.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>{{ form.thursday_hrs(size=5, class = "hrs_per_week") }}
+                                    {% for error in form.thursday_hrs.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}</td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>{{ form.friday_hrs(size=5, class = "hrs_per_week") }}
+                                    {% for error in form.friday_hrs.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>{{ form.saturday_hrs(size=5, class = "hrs_per_week") }}
+                                    {% for error in form.saturday_hrs.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>{{ form.sunday_hrs(size=5, class = "hrs_per_week") }}
+                                    {% for error in form.sunday_hrs.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+
+            <div class="div_table_month">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>No. of Hours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><p id="date_1"> </p> </td>
+                            <td>{{ form.month_1_hrs(size=5, class = "dates") }}
+                                {% for error in form.month_1_hrs.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}</td>
+                        </tr>
+                        <tr>
+                            <td><p id="date_2"></p></td>
+                            <td>{{ form.month_2_hrs(size=5, class = "dates") }}
+                                {% for error in form.month_2_hrs.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}</td>
+                        </tr>
+                        <tr>
+                            <td><p id="date_3"></p></td>
+                            <td>{{ form.month_3_hrs(size=5, class = "dates") }}
+                                {% for error in form.month_3_hrs.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}</td>
+                        </tr>
+                        <tr>
+                            <td><p id="date_4"></p></td>
+                            <td>{{ form.month_4_hrs(size=5, class = "dates") }}
+                                {% for error in form.month_4_hrs.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}</td>
+                        </tr>
+                        <tr>
+                            <td><p id="date_5"></p></td>
+                            <td>{{ form.month_5_hrs(size=5, class = "dates") }}
+                                {% for error in form.month_5_hrs.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}</td>
+                        </tr>
+                        <tr>
+                            <td><p id="date_6"></p></td>
+                            <td>{{ form.month_6_hrs(size=5, class = "dates") }}
+                                {% for error in form.month_6_hrs.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            {{ form.apply_to_related_records.label }}
+            {{ form.apply_to_related_records() }}
+            {% for error in form.apply_to_related_records.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br><br>
+
+            {{ form.submit() }}
+        </form>
+    </section>
+    
+
+{% endblock %}
+

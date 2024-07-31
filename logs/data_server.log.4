@@ -1,0 +1,1214 @@
+2020-09-08 22:19:39,575 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 129, in add_transaction
+    return render_template('transaction.html', title = 'Transaction', action = "Add", form = form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\loaders.py", line 127, in load
+    code = environment.compile(source, name, filename)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\transaction.html", line 288, in template
+    {% endfor %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endfor'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2020-09-08 22:21:24,930 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 22:21:27,837 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 129, in add_transaction
+    return render_template('transaction.html', title = 'Transaction', action = "Add", form = form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\transaction.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\transaction.html", line 284, in block "app_content"
+    {{ form.quotation_generate.label }}
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.main.forms.TransactionForm object' has no attribute 'quotation_generate'
+2020-09-08 22:21:45,100 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 22:22:42,028 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 22:23:31,191 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 17:06:33,000 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 17:06:52,316 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:22:53,923 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 22:23:33,267 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:24:46,916 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:24:53,390 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 22:24:54,769 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:24:58,338 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:26:16,051 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:26:19,831 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 22:26:20,091 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:26:20,529 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:26:22,758 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:28:13,194 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 22:28:16,478 ERROR: Exception on /service_search_box [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 182, in service_search_box
+    return render_template('service_search_box.html', title = 'Service Search')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\service_search_box.html", line 7, in block "app_content"
+    <form method="get" action="{{ url_for('main.service_search') }}">
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.service_search'. Did you mean 'main.service_search_box' instead?
+2020-09-09 22:28:55,001 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 22:31:26,781 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 22:37:41,640 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 132, in add_transaction
+    return render_template('transaction.html', title = 'Transaction', action = "Add", form = form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\transaction.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\transaction.html", line 270, in block "app_content"
+    {{ form.this_time_payment(size=32) }}<br>
+jinja2.exceptions.UndefinedError: 'app.main.forms.TransactionForm object' has no attribute 'this_time_payment'
+2020-09-09 22:38:05,913 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-09 22:47:34,991 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-25 16:07:09,737 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-25 18:03:40,456 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-25 18:12:43,271 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-25 18:20:42,589 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-25 18:23:16,358 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-25 18:27:34,776 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-25 18:50:09,963 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-28 11:28:33,522 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:20:13,846 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:20:18,730 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:20:23,956 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:21:08,556 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:23:36,522 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:23:47,120 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:25:26,374 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:26:35,960 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:26:40,825 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:26:45,654 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:26:56,800 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:05,561 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:13,447 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:26,143 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:31,439 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:34,579 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:36,991 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:39,102 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:41,219 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:46,449 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:49,312 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:51,613 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:27:53,918 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:28:06,866 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:28:33,676 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:29:41,250 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-30 16:32:07,471 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-01 17:24:00,598 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 11:54:11,272 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 12:09:34,942 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 13:29:58,251 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 13:30:19,305 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 13:34:19,528 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:05:05,646 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:05:58,182 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:07:04,414 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:08:23,651 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:11:43,610 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:12:05,701 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:12:46,938 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:14:29,836 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:17:50,007 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:19:40,711 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:20:45,989 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:22:35,689 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:25:13,409 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:35:06,719 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:35:38,256 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:36:51,108 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 14:51:07,752 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 15:03:41,019 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 15:38:38,559 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 15:39:43,532 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 15:39:45,554 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 192, in add_transaction
+    if form.validate_on_submit():
+AttributeError: 'TransactionForm' object has no attribute 'validate_on_submit'
+2020-10-02 15:42:56,202 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-02 16:02:26,909 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:06:17,237 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:11:13,725 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:14:45,732 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:16:42,853 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:17:36,264 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:17:41,848 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:17:46,782 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:17:53,934 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:18:39,604 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:18:44,307 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:19:05,115 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 15:20:01,663 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:19:34,797 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:21:50,021 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:28:39,719 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:30:48,358 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:34:56,099 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:36:21,048 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:38:03,935 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:39:42,859 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:39:45,627 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 192, in add_transaction
+    if form.validate_on_submit():
+AttributeError: 'TransactionForm' object has no attribute 'validate_on_submit'
+2020-10-03 16:40:05,252 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:47:12,339 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:51:47,597 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:54:43,531 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:55:15,760 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:55:26,070 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:55:54,210 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:56:09,735 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 16:56:12,922 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:02:39,241 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:06:36,147 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:06:53,703 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:08:46,121 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:13:11,852 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:15:08,274 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:16:22,675 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:16:38,334 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:16:55,228 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:17:46,898 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:19:29,152 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:21:00,682 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:21:38,516 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:22:00,314 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:22:45,435 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:24:00,333 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:25:34,977 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:27:39,563 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:30:27,609 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:35:15,420 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:36:26,119 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:37:23,954 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:38:18,966 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:41:22,589 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:43:39,524 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:51:12,786 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:51:46,701 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:53:04,878 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:56:25,669 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:56:48,636 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:59:14,504 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 17:59:40,843 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:00:23,636 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:00:39,929 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:01:15,114 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:02:35,513 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:02:52,623 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:03:56,476 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:04:26,098 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:04:54,645 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:05:47,727 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:06:00,743 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:07:43,990 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:09:11,130 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:10:55,181 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:11:24,744 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:15:21,296 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:18:18,799 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:18:43,325 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:31:57,229 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:32:30,173 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:34:20,231 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:34:41,792 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:35:37,137 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:36:16,317 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:36:28,119 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:37:19,419 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:38:24,952 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:39:11,819 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:39:41,659 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:40:15,692 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:41:52,321 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:42:10,556 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:44:21,699 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:45:34,135 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:45:40,088 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:47:20,503 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:48:05,629 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:49:34,169 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:51:08,432 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:51:36,999 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:58:09,669 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:58:35,654 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 18:59:23,660 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 19:03:22,421 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 19:04:27,658 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 19:05:06,714 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 19:05:21,958 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 19:07:49,346 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 19:21:46,227 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 19:26:46,678 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 19:28:13,933 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 21:47:56,016 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 21:48:36,228 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 21:50:40,637 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 21:57:42,291 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:04:30,546 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:05:11,992 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:07:30,141 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:08:49,718 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:09:21,463 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:10:04,881 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:27:00,712 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:29:32,614 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:32:17,638 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:32:46,501 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:33:09,123 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:34:00,829 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:35:25,516 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:37:11,150 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:37:56,193 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:42:48,688 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-03 22:43:19,991 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:12:08,701 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:18:48,472 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:18:53,999 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 252, in add_transaction
+    return render_template('transaction.html', title = 'Transaction', action = "Add", form = form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\transaction.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 66, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\transaction.html", line 32, in block "app_content"
+    url: '{{ url_for("autocomplete_service_name") }}'
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'autocomplete_service_name'. Did you mean 'main.autocomplete_service_name' instead?
+2020-10-04 20:19:11,599 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:19:13,569 ERROR: Exception on /autocomplete_service_name [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2098, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-10-04 20:21:37,138 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:37:25,361 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:38:30,587 ERROR: Exception on /autocomplete_service_name [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\main\routes.py", line 194, in autocomplete_service_name
+    app.logger.debug(search)
+NameError: name 'app' is not defined
+2020-10-04 20:41:20,193 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:41:24,349 ERROR: Exception on /autocomplete_service_name [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\main\routes.py", line 194, in autocomplete_service_name
+    bp.logger.debug(search)
+AttributeError: 'Blueprint' object has no attribute 'logger'
+2020-10-04 20:42:06,419 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:42:40,726 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:42:59,439 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:45:29,329 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:46:55,975 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-04 20:46:58,538 ERROR: Exception on /autocomplete_service_name [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\main\routes.py", line 195, in autocomplete_service_name
+    return jsonify(json_list=list_services_local_name)
+NameError: name 'list_services_local_name' is not defined
+2020-10-04 20:47:09,736 ERROR: Exception on /autocomplete_service_name [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\main\routes.py", line 195, in autocomplete_service_name
+    return jsonify(json_list=list_services_local_name)
+NameError: name 'list_services_local_name' is not defined
+2020-10-04 20:48:53,942 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:00:11,465 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:07:23,275 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:17:36,850 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:17:41,155 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:17:45,887 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:18:01,545 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:22:31,693 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:30:52,588 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:42:55,207 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:46:18,809 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:49:48,845 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 10:52:06,057 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 11:07:32,743 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 11:09:17,538 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 11:09:42,977 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 11:10:45,290 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 11:17:39,330 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 20:42:16,384 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 20:42:25,813 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 20:42:31,527 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 20:42:51,689 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 20:44:00,393 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 20:58:40,850 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 21:00:47,722 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 21:01:26,553 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 21:01:34,397 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 21:04:42,562 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-05 21:08:15,462 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 13:26:14,309 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 13:34:46,245 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 21:42:29,178 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 22:24:54,418 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 22:25:00,562 ERROR: Exception on /student_lookup_global [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 273, in global_student_lookup
+    return render_template('student_lookup.html', title='Global Student Lookup')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\student_lookup.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 65, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\student_lookup.html", line 30, in block "app_content"
+    url: '{{ url_for("main.students_local") }}'
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.students_local'. Did you mean 'main.student_lookup' instead?
+2020-10-06 22:31:22,884 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 22:31:25,682 ERROR: Exception on /index [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 27, in index
+    return render_template('index.html', title='Home Page')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 65, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\index.html", line 11, in block "app_content"
+    <br><a href="{{ url_for('main.global_student_lookup') }}">Global student lookup</a>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.global_student_lookup'. Did you mean 'main.student_lookup' instead?

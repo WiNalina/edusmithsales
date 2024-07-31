@@ -1,0 +1,127 @@
+2021-02-15 13:12:38,051 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 645, in add_transaction
+    array_paid_value, array_this_time_count, preview_filename = save_transaction_changes(transaction, form, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 581, in save_transaction_changes
+    db.session.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\scoping.py", line 163, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1042, in commit
+    self.transaction.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 511, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\event\attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "C:\Users\never\website\app\models.py", line 39, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "C:\Users\never\website\app\search.py", line 8, in add_to_index
+    payload[field] = getattr(model, field)
+AttributeError: 'Student' object has no attribute 'nickname'
+2021-02-15 13:13:06,336 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:13:06,343 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:13:13,871 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:13:13,872 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:13:22,094 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 645, in add_transaction
+    array_paid_value, array_this_time_count, preview_filename = save_transaction_changes(transaction, form, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 581, in save_transaction_changes
+    db.session.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\scoping.py", line 163, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1042, in commit
+    self.transaction.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 511, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\event\attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "C:\Users\never\website\app\models.py", line 39, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "C:\Users\never\website\app\search.py", line 8, in add_to_index
+    payload[field] = getattr(model, field)
+AttributeError: 'Student' object has no attribute 'nickname'
+2021-02-15 13:13:31,851 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:13:31,854 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:13:35,821 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 645, in add_transaction
+    array_paid_value, array_this_time_count, preview_filename = save_transaction_changes(transaction, form, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 581, in save_transaction_changes
+    db.session.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\scoping.py", line 163, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1042, in commit
+    self.transaction.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 511, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\event\attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "C:\Users\never\website\app\models.py", line 39, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "C:\Users\never\website\app\search.py", line 8, in add_to_index
+    payload[field] = getattr(model, field)
+AttributeError: 'Student' object has no attribute 'nickname'
+2021-02-15 13:14:19,623 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:14:19,623 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:16:45,060 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:16:45,062 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:16:53,804 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:16:53,805 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:16:59,482 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:16:59,483 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:17:49,903 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:17:49,904 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:18:49,948 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:18:49,949 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:20:59,231 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:20:59,232 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 13:21:51,832 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 13:21:51,836 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 14:52:24,889 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 14:52:24,890 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 14:52:35,037 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 14:52:35,038 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 14:54:04,053 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 14:54:04,054 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]

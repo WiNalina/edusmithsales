@@ -1,0 +1,1142 @@
+2020-10-06 22:31:27,010 ERROR: Exception on /index [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 27, in index
+    return render_template('index.html', title='Home Page')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 65, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\index.html", line 11, in block "app_content"
+    <br><a href="{{ url_for('main.global_student_lookup') }}">Global student lookup</a>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.global_student_lookup'. Did you mean 'main.student_lookup' instead?
+2020-10-06 22:31:55,006 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 22:32:05,025 ERROR: Exception on /global_student_lookup [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 60, in global_student_lookup
+    return render_template('student_lookup.html', form=form, title='Student Lookup')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\student_lookup.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 65, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\student_lookup.html", line 30, in block "app_content"
+    url: '{{ url_for("main.students_local") }}'
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.students_local'. Did you mean 'main.student' instead?
+2020-10-06 22:34:15,548 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 22:34:34,905 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 22:35:01,969 ERROR: Exception on /students_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column student.line does not exist
+LINE 1: ...udent_mobile_num, student.email AS student_email, student.li...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 53, in students_local
+    list_students = [r.as_dict() for r in student_res]
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3533, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column student.line does not exist
+LINE 1: ...udent_mobile_num, student.email AS student_email, student.li...
+                                                             ^
+
+[SQL: SELECT student.id AS student_id, student.firstname_eng AS student_firstname_eng, student.lastname_eng AS student_lastname_eng, student.nickname_eng AS student_nickname_eng, student.fullname_eng AS student_fullname_eng, student.firstname_th AS student_firstname_th, student.lastname_th AS student_lastname_th, student.nickname_th AS student_nickname_th, student.fullname_th AS student_fullname_th, student.student_country AS student_student_country, student.school AS student_school, student.graduate_year AS student_graduate_year, student.mobile_num AS student_mobile_num, student.email AS student_email, student.line AS student_line, student.address AS student_address, student.dad_fullname AS student_dad_fullname, student.dad_mobile_num AS student_dad_mobile_num, student.dad_email AS student_dad_email, student.dad_line AS student_dad_line, student.mom_fullname AS student_mom_fullname, student.mom_mobile_num AS student_mom_mobile_num, student.mom_email AS student_mom_email, student.mom_line AS student_mom_line, student.know_us_from AS student_know_us_from 
+FROM student 
+WHERE student.student_country = %(student_country_1)s]
+[parameters: {'student_country_1': 'Thailand'}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2020-10-06 22:35:02,001 ERROR: Exception on /students_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column student.line does not exist
+LINE 1: ...udent_mobile_num, student.email AS student_email, student.li...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 53, in students_local
+    list_students = [r.as_dict() for r in student_res]
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3533, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column student.line does not exist
+LINE 1: ...udent_mobile_num, student.email AS student_email, student.li...
+                                                             ^
+
+[SQL: SELECT student.id AS student_id, student.firstname_eng AS student_firstname_eng, student.lastname_eng AS student_lastname_eng, student.nickname_eng AS student_nickname_eng, student.fullname_eng AS student_fullname_eng, student.firstname_th AS student_firstname_th, student.lastname_th AS student_lastname_th, student.nickname_th AS student_nickname_th, student.fullname_th AS student_fullname_th, student.student_country AS student_student_country, student.school AS student_school, student.graduate_year AS student_graduate_year, student.mobile_num AS student_mobile_num, student.email AS student_email, student.line AS student_line, student.address AS student_address, student.dad_fullname AS student_dad_fullname, student.dad_mobile_num AS student_dad_mobile_num, student.dad_email AS student_dad_email, student.dad_line AS student_dad_line, student.mom_fullname AS student_mom_fullname, student.mom_mobile_num AS student_mom_mobile_num, student.mom_email AS student_mom_email, student.mom_line AS student_mom_line, student.know_us_from AS student_know_us_from 
+FROM student 
+WHERE student.student_country = %(student_country_1)s]
+[parameters: {'student_country_1': 'Thailand'}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2020-10-06 22:37:17,358 ERROR: Exception on /students_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column student.line does not exist
+LINE 1: ...udent_mobile_num, student.email AS student_email, student.li...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 53, in students_local
+    list_students = [r.as_dict() for r in student_res]
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3533, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column student.line does not exist
+LINE 1: ...udent_mobile_num, student.email AS student_email, student.li...
+                                                             ^
+
+[SQL: SELECT student.id AS student_id, student.firstname_eng AS student_firstname_eng, student.lastname_eng AS student_lastname_eng, student.nickname_eng AS student_nickname_eng, student.fullname_eng AS student_fullname_eng, student.firstname_th AS student_firstname_th, student.lastname_th AS student_lastname_th, student.nickname_th AS student_nickname_th, student.fullname_th AS student_fullname_th, student.student_country AS student_student_country, student.school AS student_school, student.graduate_year AS student_graduate_year, student.mobile_num AS student_mobile_num, student.email AS student_email, student.line AS student_line, student.address AS student_address, student.dad_fullname AS student_dad_fullname, student.dad_mobile_num AS student_dad_mobile_num, student.dad_email AS student_dad_email, student.dad_line AS student_dad_line, student.mom_fullname AS student_mom_fullname, student.mom_mobile_num AS student_mom_mobile_num, student.mom_email AS student_mom_email, student.mom_line AS student_mom_line, student.know_us_from AS student_know_us_from 
+FROM student 
+WHERE student.student_country = %(student_country_1)s]
+[parameters: {'student_country_1': 'Thailand'}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2020-10-06 22:37:17,375 ERROR: Exception on /students_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column student.line does not exist
+LINE 1: ...udent_mobile_num, student.email AS student_email, student.li...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 53, in students_local
+    list_students = [r.as_dict() for r in student_res]
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3533, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column student.line does not exist
+LINE 1: ...udent_mobile_num, student.email AS student_email, student.li...
+                                                             ^
+
+[SQL: SELECT student.id AS student_id, student.firstname_eng AS student_firstname_eng, student.lastname_eng AS student_lastname_eng, student.nickname_eng AS student_nickname_eng, student.fullname_eng AS student_fullname_eng, student.firstname_th AS student_firstname_th, student.lastname_th AS student_lastname_th, student.nickname_th AS student_nickname_th, student.fullname_th AS student_fullname_th, student.student_country AS student_student_country, student.school AS student_school, student.graduate_year AS student_graduate_year, student.mobile_num AS student_mobile_num, student.email AS student_email, student.line AS student_line, student.address AS student_address, student.dad_fullname AS student_dad_fullname, student.dad_mobile_num AS student_dad_mobile_num, student.dad_email AS student_dad_email, student.dad_line AS student_dad_line, student.mom_fullname AS student_mom_fullname, student.mom_mobile_num AS student_mom_mobile_num, student.mom_email AS student_mom_email, student.mom_line AS student_mom_line, student.know_us_from AS student_know_us_from 
+FROM student 
+WHERE student.student_country = %(student_country_1)s]
+[parameters: {'student_country_1': 'Thailand'}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2020-10-06 22:45:37,664 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 22:45:47,894 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-06 22:45:52,627 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-07 17:07:48,226 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-14 20:01:41,156 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-14 20:01:44,198 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:06:45,856 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:06:57,213 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:07:04,651 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:07:22,644 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:07:30,126 ERROR: Exception on / [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 28, in index
+    return render_template('index.html', title='Home Page')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 65, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\index.html", line 12, in block "app_content"
+    <br><a href="{{ url_for('main.add_service_global') }}">Add new services</a>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.add_service_global'. Did you mean 'main.services_global' instead?
+2020-10-17 19:07:58,419 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:08:10,892 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+TypeError: add_transaction() missing 1 required positional argument: 'transaction_id'
+2020-10-17 19:08:40,406 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+TypeError: add_transaction() missing 1 required positional argument: 'transaction_id'
+2020-10-17 19:08:42,810 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+TypeError: add_transaction() missing 1 required positional argument: 'transaction_id'
+2020-10-17 19:08:50,341 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:08:54,118 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:10:11,672 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:55:55,488 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 19:59:53,475 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:00:10,379 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:00:14,568 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:01:17,078 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:01:45,759 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:01:50,947 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:01:58,051 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:07:55,410 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:08:00,650 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:08:07,117 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:13:31,607 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:27:39,104 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:27:47,901 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:27:52,965 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:27:56,572 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:29:55,179 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:30:00,207 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:30:03,559 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:32:47,189 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:32:50,774 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:32:57,352 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:33:40,500 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:33:45,499 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:33:48,285 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:33:52,582 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:33:59,925 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:34:08,857 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:39:05,425 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:39:16,467 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:40:03,415 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:40:13,536 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:40:18,477 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:40:36,069 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:40:39,996 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:40:44,439 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:41:12,418 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:41:19,246 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:41:34,868 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:41:41,641 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:41:47,323 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:41:54,347 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:43:22,489 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:43:33,312 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:43:40,975 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:43:52,641 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:43:57,878 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:44:00,868 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:44:09,417 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:45:22,852 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:45:29,060 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:45:52,330 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:46:00,875 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:46:04,682 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:46:08,192 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:47:44,624 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:47:47,506 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:47:54,546 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:47:57,161 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:48:03,999 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:48:49,071 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 20:48:55,850 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 21:05:00,621 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 21:58:01,733 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 21:58:14,291 ERROR: Exception on /students_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 54, in students_local
+    list_students = [r.as_dict() for r in student_res]
+  File "C:\Users\never\website\app\main\routes.py", line 54, in <listcomp>
+    list_students = [r.as_dict() for r in student_res]
+  File "C:\Users\never\website\app\models.py", line 238, in as_dict
+    return {'fullname_eng': self.fullname_eng, 'fullname_th': self.fullname_th,
+AttributeError: 'Student' object has no attribute 'fullname_eng'
+2020-10-17 21:59:20,773 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 21:59:22,773 ERROR: Exception on /students_local [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 54, in students_local
+    list_students = [r.as_dict() for r in student_res]
+  File "C:\Users\never\website\app\main\routes.py", line 54, in <listcomp>
+    list_students = [r.as_dict() for r in student_res]
+  File "C:\Users\never\website\app\models.py", line 242, in as_dict
+    'dad_name': self.dad_fullname, 'dad_mobile_num': self.dad_mobile_num,
+AttributeError: 'Student' object has no attribute 'dad_fullname'
+2020-10-17 21:59:49,668 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 22:07:21,955 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 22:36:02,390 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 22:49:25,742 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 22:53:28,516 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-17 22:53:43,737 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 273, in add_transaction
+    if form.validate_on_submit():
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_wtf\form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\form.py", line 318, in validate
+    return super(Form, self).validate(extra)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\form.py", line 150, in validate
+    if not field.validate(self, extra):
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\fields\core.py", line 226, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\fields\core.py", line 246, in _run_validation_chain
+    validator(form, self)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\validators.py", line 147, in __call__
+    if data is None or math.isnan(data) or (self.min is not None and data < self.min) or \
+TypeError: '<' not supported between instances of 'int' and 'str'
+2020-10-17 22:56:28,895 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 273, in add_transaction
+    if form.validate_on_submit():
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_wtf\form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\form.py", line 318, in validate
+    return super(Form, self).validate(extra)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\form.py", line 150, in validate
+    if not field.validate(self, extra):
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\fields\core.py", line 226, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\fields\core.py", line 246, in _run_validation_chain
+    validator(form, self)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\validators.py", line 147, in __call__
+    if data is None or math.isnan(data) or (self.min is not None and data < self.min) or \
+TypeError: '<' not supported between instances of 'int' and 'str'
+2020-10-17 22:59:09,757 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-18 16:39:34,213 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-18 16:45:13,269 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-10-18 16:45:45,089 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-20 21:43:44,591 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-20 21:48:12,283 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-20 21:48:19,210 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-20 21:48:25,134 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:41:24,161 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:44:11,727 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:44:48,874 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:45:21,474 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:47:07,760 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:48:13,920 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:52:01,169 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:54:40,273 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 21:56:31,443 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:00:36,169 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:02:22,979 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:02:49,908 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:05:32,059 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:06:18,528 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:06:36,734 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:08:33,254 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:09:30,739 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:10:30,608 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:11:04,445 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:16:02,755 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:18:17,972 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:19:04,717 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:22:31,650 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:23:13,019 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:23:31,806 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:24:47,121 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:25:26,607 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:26:25,774 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:26:48,737 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:27:34,634 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:27:56,963 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:28:19,315 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:29:43,652 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:30:05,696 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:32:15,736 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:32:30,105 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:33:07,572 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:34:07,131 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:36:40,165 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:42:04,982 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:43:18,717 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:44:53,421 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:46:31,800 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:46:52,727 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:52:37,267 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-21 22:52:58,094 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 11:50:18,577 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 11:50:28,176 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 296, in add_transaction
+    save_transaction_changes(transaction, form, last_time_payment, new=True)
+NameError: name 'last_time_payment' is not defined
+2020-12-22 11:54:03,872 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 11:54:42,786 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 296, in add_transaction
+    save_transaction_changes(transaction, form, last_time_payment = 0.0, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 105, in save_transaction_changes
+    transaction.student_id = form.student_id.data
+AttributeError: 'TransactionForm' object has no attribute 'student_id'
+2020-12-22 11:57:32,961 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 11:57:53,152 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 406, in _entity_descriptor
+    return getattr(entity, key)
+AttributeError: type object 'Student' has no attribute 'country'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 297, in add_transaction
+    save_transaction_changes(transaction, form, last_time_payment = 0.0, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 105, in save_transaction_changes
+    student_query = Student.query.filter_by(name = form.student_full_name.data, country=current_user.user_country).first_or_404()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 1907, in filter_by
+    for key, value in kwargs.items()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 1907, in <listcomp>
+    for key, value in kwargs.items()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _entity_descriptor
+    replace_context=err,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+sqlalchemy.exc.InvalidRequestError: Entity '<class 'app.models.Student'>' has no property 'country'
+2020-12-22 11:58:11,838 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 11:58:14,470 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 406, in _entity_descriptor
+    return getattr(entity, key)
+AttributeError: type object 'Student' has no attribute 'country'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 297, in add_transaction
+    save_transaction_changes(transaction, form, last_time_payment = 0.0, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 105, in save_transaction_changes
+    student_query = Student.query.filter_by(name = form.student_full_name.data, country=current_user.user_country).first_or_404()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 1907, in filter_by
+    for key, value in kwargs.items()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 1907, in <listcomp>
+    for key, value in kwargs.items()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _entity_descriptor
+    replace_context=err,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+sqlalchemy.exc.InvalidRequestError: Entity '<class 'app.models.Student'>' has no property 'country'
+2020-12-22 11:58:21,817 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 11:58:25,036 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 297, in add_transaction
+    save_transaction_changes(transaction, form, last_time_payment = 0.0, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 106, in save_transaction_changes
+    transaction.student_id = student_query.id.data
+AttributeError: 'int' object has no attribute 'data'
+2020-12-22 11:58:50,560 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 11:58:55,745 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 297, in add_transaction
+    save_transaction_changes(transaction, form, last_time_payment = 0.0, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 236, in save_transaction_changes
+    bp.logger.info(form.quotation_generate.data)
+AttributeError: 'Blueprint' object has no attribute 'logger'
+2020-12-22 11:59:37,186 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 11:59:40,365 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.ProgrammingError: can't adapt type 'StringField'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 297, in add_transaction
+    save_transaction_changes(transaction, form, last_time_payment = 0.0, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 253, in save_transaction_changes
+    db.session.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\scoping.py", line 163, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1042, in commit
+    self.transaction.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 504, in commit
+    self._prepare_impl()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 483, in _prepare_impl
+    self.session.flush()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2523, in flush
+    self._flush(objects)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2664, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2624, in _flush
+    flush_context.execute()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 589, in execute
+    uow,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\persistence.py", line 245, in save_obj
+    insert,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\persistence.py", line 1136, in _emit_insert_statements
+    statement, params
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.ProgrammingError) can't adapt type 'StringField'
+[SQL: INSERT INTO transaction (country, create_timestamp, latest_timestamp, create_user, update_user, student_name, student_id, ser_1_name, ser_1_id, ser_1_initial_price, ser_1_count, ser_1_discount_value, ser_1_final_price, ser_1_vat_value, ser_1_note, ser_2_name, ser_2_id, ser_2_initial_price, ser_2_count, ser_2_discount_value, ser_2_final_price, ser_2_vat_value, ser_2_note, ser_3_name, ser_3_id, ser_3_initial_price, ser_3_count, ser_3_discount_value, ser_3_final_price, ser_3_vat_value, ser_3_note, ser_4_name, ser_4_id, ser_4_initial_price, ser_4_count, ser_4_discount_value, ser_4_final_price, ser_4_vat_value, ser_4_note, ser_5_name, ser_5_id, ser_5_initial_price, ser_5_count, ser_5_discount_value, ser_5_final_price, ser_5_vat_value, ser_5_note, ser_6_name, ser_6_id, ser_6_initial_price, ser_6_count, ser_6_discount_value, ser_6_final_price, ser_6_vat_value, ser_6_note, this_time_payment, remaining_outstanding, total_payment, total_vat_value, due_date, payment_method, refund_flag, cancel_flag, complete_flag, generate_quotation_flag, quotation_number, generate_invoice_flag, invoice_number, generate_receipt_flag, receipt_number, note) VALUES (%(country)s, %(create_timestamp)s, %(latest_timestamp)s, %(create_user)s, %(update_user)s, %(student_name)s, %(student_id)s, %(ser_1_name)s, %(ser_1_id)s, %(ser_1_initial_price)s, %(ser_1_count)s, %(ser_1_discount_value)s, %(ser_1_final_price)s, %(ser_1_vat_value)s, %(ser_1_note)s, %(ser_2_name)s, %(ser_2_id)s, %(ser_2_initial_price)s, %(ser_2_count)s, %(ser_2_discount_value)s, %(ser_2_final_price)s, %(ser_2_vat_value)s, %(ser_2_note)s, %(ser_3_name)s, %(ser_3_id)s, %(ser_3_initial_price)s, %(ser_3_count)s, %(ser_3_discount_value)s, %(ser_3_final_price)s, %(ser_3_vat_value)s, %(ser_3_note)s, %(ser_4_name)s, %(ser_4_id)s, %(ser_4_initial_price)s, %(ser_4_count)s, %(ser_4_discount_value)s, %(ser_4_final_price)s, %(ser_4_vat_value)s, %(ser_4_note)s, %(ser_5_name)s, %(ser_5_id)s, %(ser_5_initial_price)s, %(ser_5_count)s, %(ser_5_discount_value)s, %(ser_5_final_price)s, %(ser_5_vat_value)s, %(ser_5_note)s, %(ser_6_name)s, %(ser_6_id)s, %(ser_6_initial_price)s, %(ser_6_count)s, %(ser_6_discount_value)s, %(ser_6_final_price)s, %(ser_6_vat_value)s, %(ser_6_note)s, %(this_time_payment)s, %(remaining_outstanding)s, %(total_payment)s, %(total_vat_value)s, %(due_date)s, %(payment_method)s, %(refund_flag)s, %(cancel_flag)s, %(complete_flag)s, %(generate_quotation_flag)s, %(quotation_number)s, %(generate_invoice_flag)s, %(invoice_number)s, %(generate_receipt_flag)s, %(receipt_number)s, %(note)s) RETURNING transaction.id]
+[parameters: {'country': 'Thailand', 'create_timestamp': datetime.datetime(2020, 12, 22, 4, 59, 40, 364234), 'latest_timestamp': datetime.datetime(2020, 12, 22, 4, 59, 40, 364234), 'create_user': 'example', 'update_user': None, 'student_name': <wtforms.fields.core.StringField object at 0x000001F6F0A268C8>, 'student_id': 297, 'ser_1_name': 'UK Interview Preparation', 'ser_1_id': 124, 'ser_1_initial_price': 15000.0, 'ser_1_count': 1, 'ser_1_discount_value': 0.0, 'ser_1_final_price': 15000.0, 'ser_1_vat_value': 0.0, 'ser_1_note': '', 'ser_2_name': None, 'ser_2_id': None, 'ser_2_initial_price': None, 'ser_2_count': None, 'ser_2_discount_value': None, 'ser_2_final_price': None, 'ser_2_vat_value': None, 'ser_2_note': None, 'ser_3_name': None, 'ser_3_id': None, 'ser_3_initial_price': None, 'ser_3_count': None, 'ser_3_discount_value': None, 'ser_3_final_price': None, 'ser_3_vat_value': None, 'ser_3_note': None, 'ser_4_name': None, 'ser_4_id': None, 'ser_4_initial_price': None, 'ser_4_count': None, 'ser_4_discount_value': None, 'ser_4_final_price': None, 'ser_4_vat_value': None, 'ser_4_note': None, 'ser_5_name': None, 'ser_5_id': None, 'ser_5_initial_price': None, 'ser_5_count': None, 'ser_5_discount_value': None, 'ser_5_final_price': None, 'ser_5_vat_value': None, 'ser_5_note': None, 'ser_6_name': None, 'ser_6_id': None, 'ser_6_initial_price': None, 'ser_6_count': None, 'ser_6_discount_value': None, 'ser_6_final_price': None, 'ser_6_vat_value': None, 'ser_6_note': None, 'this_time_payment': 0.0, 'remaining_outstanding': 15000.0, 'total_payment': 15000.0, 'total_vat_value': 0.0, 'due_date': '10-12-2020', 'payment_method': 'Credit Card', 'refund_flag': False, 'cancel_flag': False, 'complete_flag': False, 'generate_quotation_flag': False, 'quotation_number': None, 'generate_invoice_flag': False, 'invoice_number': None, 'generate_receipt_flag': False, 'receipt_number': None, 'note': ''}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2020-12-22 12:02:40,765 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 12:02:44,529 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.ProgrammingError: can't adapt type 'StringField'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 298, in add_transaction
+    save_transaction_changes(transaction, form, last_time_payment = 0.0, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 254, in save_transaction_changes
+    db.session.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\scoping.py", line 163, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1042, in commit
+    self.transaction.commit()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 504, in commit
+    self._prepare_impl()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 483, in _prepare_impl
+    self.session.flush()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2523, in flush
+    self._flush(objects)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2664, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 2624, in _flush
+    flush_context.execute()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 589, in execute
+    uow,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\persistence.py", line 245, in save_obj
+    insert,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\persistence.py", line 1136, in _emit_insert_statements
+    statement, params
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.ProgrammingError) can't adapt type 'StringField'
+[SQL: INSERT INTO transaction (country, create_timestamp, latest_timestamp, create_user, update_user, student_name, student_id, ser_1_name, ser_1_id, ser_1_initial_price, ser_1_count, ser_1_discount_value, ser_1_final_price, ser_1_vat_value, ser_1_note, ser_2_name, ser_2_id, ser_2_initial_price, ser_2_count, ser_2_discount_value, ser_2_final_price, ser_2_vat_value, ser_2_note, ser_3_name, ser_3_id, ser_3_initial_price, ser_3_count, ser_3_discount_value, ser_3_final_price, ser_3_vat_value, ser_3_note, ser_4_name, ser_4_id, ser_4_initial_price, ser_4_count, ser_4_discount_value, ser_4_final_price, ser_4_vat_value, ser_4_note, ser_5_name, ser_5_id, ser_5_initial_price, ser_5_count, ser_5_discount_value, ser_5_final_price, ser_5_vat_value, ser_5_note, ser_6_name, ser_6_id, ser_6_initial_price, ser_6_count, ser_6_discount_value, ser_6_final_price, ser_6_vat_value, ser_6_note, this_time_payment, remaining_outstanding, total_payment, total_vat_value, due_date, payment_method, refund_flag, cancel_flag, complete_flag, generate_quotation_flag, quotation_number, generate_invoice_flag, invoice_number, generate_receipt_flag, receipt_number, note) VALUES (%(country)s, %(create_timestamp)s, %(latest_timestamp)s, %(create_user)s, %(update_user)s, %(student_name)s, %(student_id)s, %(ser_1_name)s, %(ser_1_id)s, %(ser_1_initial_price)s, %(ser_1_count)s, %(ser_1_discount_value)s, %(ser_1_final_price)s, %(ser_1_vat_value)s, %(ser_1_note)s, %(ser_2_name)s, %(ser_2_id)s, %(ser_2_initial_price)s, %(ser_2_count)s, %(ser_2_discount_value)s, %(ser_2_final_price)s, %(ser_2_vat_value)s, %(ser_2_note)s, %(ser_3_name)s, %(ser_3_id)s, %(ser_3_initial_price)s, %(ser_3_count)s, %(ser_3_discount_value)s, %(ser_3_final_price)s, %(ser_3_vat_value)s, %(ser_3_note)s, %(ser_4_name)s, %(ser_4_id)s, %(ser_4_initial_price)s, %(ser_4_count)s, %(ser_4_discount_value)s, %(ser_4_final_price)s, %(ser_4_vat_value)s, %(ser_4_note)s, %(ser_5_name)s, %(ser_5_id)s, %(ser_5_initial_price)s, %(ser_5_count)s, %(ser_5_discount_value)s, %(ser_5_final_price)s, %(ser_5_vat_value)s, %(ser_5_note)s, %(ser_6_name)s, %(ser_6_id)s, %(ser_6_initial_price)s, %(ser_6_count)s, %(ser_6_discount_value)s, %(ser_6_final_price)s, %(ser_6_vat_value)s, %(ser_6_note)s, %(this_time_payment)s, %(remaining_outstanding)s, %(total_payment)s, %(total_vat_value)s, %(due_date)s, %(payment_method)s, %(refund_flag)s, %(cancel_flag)s, %(complete_flag)s, %(generate_quotation_flag)s, %(quotation_number)s, %(generate_invoice_flag)s, %(invoice_number)s, %(generate_receipt_flag)s, %(receipt_number)s, %(note)s) RETURNING transaction.id]
+[parameters: {'country': 'Thailand', 'create_timestamp': datetime.datetime(2020, 12, 22, 5, 2, 44, 528893), 'latest_timestamp': datetime.datetime(2020, 12, 22, 5, 2, 44, 528893), 'create_user': 'example', 'update_user': None, 'student_name': <wtforms.fields.core.StringField object at 0x000001F8306B0848>, 'student_id': 297, 'ser_1_name': 'UK Interview Preparation', 'ser_1_id': 124, 'ser_1_initial_price': 15000.0, 'ser_1_count': 1, 'ser_1_discount_value': 0.0, 'ser_1_final_price': 15000.0, 'ser_1_vat_value': 0.0, 'ser_1_note': '', 'ser_2_name': None, 'ser_2_id': None, 'ser_2_initial_price': None, 'ser_2_count': None, 'ser_2_discount_value': None, 'ser_2_final_price': None, 'ser_2_vat_value': None, 'ser_2_note': None, 'ser_3_name': None, 'ser_3_id': None, 'ser_3_initial_price': None, 'ser_3_count': None, 'ser_3_discount_value': None, 'ser_3_final_price': None, 'ser_3_vat_value': None, 'ser_3_note': None, 'ser_4_name': None, 'ser_4_id': None, 'ser_4_initial_price': None, 'ser_4_count': None, 'ser_4_discount_value': None, 'ser_4_final_price': None, 'ser_4_vat_value': None, 'ser_4_note': None, 'ser_5_name': None, 'ser_5_id': None, 'ser_5_initial_price': None, 'ser_5_count': None, 'ser_5_discount_value': None, 'ser_5_final_price': None, 'ser_5_vat_value': None, 'ser_5_note': None, 'ser_6_name': None, 'ser_6_id': None, 'ser_6_initial_price': None, 'ser_6_count': None, 'ser_6_discount_value': None, 'ser_6_final_price': None, 'ser_6_vat_value': None, 'ser_6_note': None, 'this_time_payment': 0.0, 'remaining_outstanding': 15000.0, 'total_payment': 15000.0, 'total_vat_value': 0.0, 'due_date': '10-12-2020', 'payment_method': 'Credit Card', 'refund_flag': False, 'cancel_flag': False, 'complete_flag': False, 'generate_quotation_flag': False, 'quotation_number': None, 'generate_invoice_flag': False, 'invoice_number': None, 'generate_receipt_flag': False, 'receipt_number': None, 'note': ''}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2020-12-22 12:03:09,316 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 12:13:33,765 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 12:17:07,678 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 12:22:53,853 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 12:24:03,233 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 13:51:58,711 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 13:58:31,737 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:17:44,842 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:19:24,749 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:19:30,266 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:24:58,966 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:25:05,251 ERROR: Exception on /transaction/1 [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 358, in edit_transaction
+    return render_template('transaction.html', title = 'Transaction', action = "Edit", form = form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\transaction.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 65, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\transaction.html", line 667, in block "app_content"
+    {{ form.total_value(size=32) }}<br>
+TypeError: 'decimal.Decimal' object is not callable
+2020-12-22 14:26:46,595 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:27:49,218 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:27:51,365 ERROR: Exception on /transaction/1 [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 352, in edit_transaction
+    form = transaction_to_form(transaction, form)
+  File "C:\Users\never\website\app\main\routes.py", line 131, in transaction_to_form
+    form.service_5_discount_value.data = float(transaction.ser_5_discount_value)
+TypeError: float() argument must be a string or a number, not 'NoneType'
+2020-12-22 14:28:08,021 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:32:23,652 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:37:59,178 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:38:03,301 ERROR: Exception on /transaction/1 [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 388, in edit_transaction
+    return render_template('transaction.html', title = 'Transaction', action = "Edit", form = form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\transaction.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 65, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\transaction.html", line 432, in block "app_content"
+    {{ form.service_2_discount_value(size=32) }}<br>
+TypeError: 'float' object is not callable
+2020-12-22 14:38:44,272 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-12-22 14:39:19,151 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]

@@ -1,0 +1,195 @@
+2021-02-17 19:17:09,590 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 19:17:09,597 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 19:19:14,931 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 19:19:14,934 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 19:20:06,331 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-17 19:20:06,332 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-17 19:34:48,579 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:120]
+2021-02-17 19:34:48,579 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:132]
+2021-02-18 15:52:30,110 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:120]
+2021-02-18 15:52:30,112 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:132]
+2021-02-19 18:16:51,603 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:120]
+2021-02-19 18:16:51,606 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:132]
+2021-02-26 19:12:15,392 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-26 19:12:15,393 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-26 19:15:19,915 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-26 19:15:19,916 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-26 19:18:06,000 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-26 19:18:06,001 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-26 19:18:12,685 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-26 19:18:12,689 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-26 19:19:15,315 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-26 19:19:15,318 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-26 19:27:22,036 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-26 19:27:22,037 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-26 19:27:28,485 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-26 19:27:28,488 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-27 10:24:16,120 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-27 10:24:16,122 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-27 10:24:53,101 ERROR: Exception on /add_transaction [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 744, in add_transaction
+    array_paid_value, array_this_time_count, preview_filename = save_transaction_changes(transaction, form, new=True)
+  File "C:\Users\never\website\app\main\routes.py", line 470, in save_transaction_changes
+    transaction.remaining_outstanding += payment_difference - this_time_payment
+TypeError: unsupported operand type(s) for +=: 'NoneType' and 'float'
+2021-02-27 15:32:51,398 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-27 15:32:51,399 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-27 15:48:19,115 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-27 15:48:19,116 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-27 15:51:51,086 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-27 15:51:51,087 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-27 15:58:26,035 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:111]
+2021-02-27 15:58:26,036 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:123]
+2021-02-28 11:14:22,944 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-02-28 11:23:12,802 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-02-28 11:23:29,950 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-02-28 11:26:42,001 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-01 12:21:03,779 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-01 12:21:26,938 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 2338, in _wrap_pool_connect
+    return fn()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 364, in connect
+    return _ConnectionFairy._checkout(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 778, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 495, in checkout
+    rec = pool._do_get()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\impl.py", line 140, in _do_get
+    self._dec_overflow()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\impl.py", line 137, in _do_get
+    return self._create_connection()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 309, in _create_connection
+    return _ConnectionRecord(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 440, in __init__
+    self.__connect(first_connect_check=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 656, in __connect
+    connection = pool._invoke_creator(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "c:\users\never\website\website_dev\lib\site-packages\psycopg2\__init__.py", line 127, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "ec2-52-4-171-132.compute-1.amazonaws.com" to address: Unknown host
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_limiter\extension.py", line 702, in __inner
+    return obj(*a, **k)
+  File "C:\Users\never\website\app\auth\routes.py", line 27, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3402, in first
+    ret = list(self[0:1])
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3176, in __getitem__
+    return list(res)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3530, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3545, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3523, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1141, in connection
+    execution_options=execution_options,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 1147, in _connection_for_bind
+    engine, execution_options
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\session.py", line 433, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 2304, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 2342, in _wrap_pool_connect
+    e, dialect, self
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1584, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 2338, in _wrap_pool_connect
+    return fn()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 364, in connect
+    return _ConnectionFairy._checkout(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 778, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 495, in checkout
+    rec = pool._do_get()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\impl.py", line 140, in _do_get
+    self._dec_overflow()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\impl.py", line 137, in _do_get
+    return self._create_connection()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 309, in _create_connection
+    return _ConnectionRecord(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 440, in __init__
+    self.__connect(first_connect_check=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\pool\base.py", line 656, in __connect
+    connection = pool._invoke_creator(self)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "c:\users\never\website\website_dev\lib\site-packages\psycopg2\__init__.py", line 127, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "ec2-52-4-171-132.compute-1.amazonaws.com" to address: Unknown host
+
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+2021-03-01 12:22:55,017 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-01 12:50:16,379 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-03 16:56:06,051 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-12 14:44:40,892 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-15 21:17:52,361 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-16 16:07:45,115 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-16 16:30:42,202 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-16 16:32:14,337 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-16 16:32:31,313 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-16 16:33:20,987 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-29 21:41:05,442 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]
+2021-03-31 19:11:13,480 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:126]

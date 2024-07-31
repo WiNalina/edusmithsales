@@ -1,0 +1,275 @@
+{% extends "base_wo_ending_script.html" %}
+
+{% block app_content %}
+    {% block scripts %}
+        <style>
+            td, th {
+                border: 1px solid #dddddd;
+                margin: auto;
+                padding: 5px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+        </style>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#transaction').DataTable( {
+                    "order": [[ 0, "desc" ]]
+                })
+            } );
+        </script>
+    {% endblock %}
+    
+    {% if student %}
+    <h1>  {{ student.name }} </h1>
+    <h2>  Student Profile </h2>
+    <div class="table-responsive">
+        <table id="student" class="table table-bordered table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if student.name %}
+                <tr valign="top">
+                    <td><b> Student Name </b></td>
+                    <td>{{ student.name | missingfilter }}</td>
+                </tr>
+                {% endif %}
+
+                {% if student.name_th %}
+                <tr>
+                    <td><b>Thai Name</b></td>
+                    <td>{{ student.name_th | missingfilter }}</td>
+                </tr>
+                {% endif %}
+
+                {% if student.universal_id %}
+                <tr>
+                    <td><b>Universal ID</b></td>
+                    <td>{{ student.universal_id | missingfilter }}</td>
+                </tr>
+                {% endif %}
+
+                {% if student.school %}
+                <tr>
+                    <td><b>School</b></td>
+                    <td>{{ student.school | missingfilter }}</td>
+                </tr>
+                {% endif %}
+
+                {% if student.address %}
+                <tr>
+                    <td><b>Address</b></td>
+                    <td>{{ student.address | missingfilter }} </td>
+                </tr>
+                {% endif %}
+
+                {% if student.graduate_year %}
+                <tr>
+                    <td><b>Graduate Year</b></td>
+                    <td>{{ student.graduate_year | missingfilter }} </td>
+                </tr>
+                {% endif %}
+
+                {% if student.mobile_num %}
+                <tr>
+                    <td><b>Mobile Number</b></td>
+                    <td>{{ student.mobile_num | missingfilter }} </td>
+                </tr>
+                {% endif %}
+
+                {% if student.line %}
+                <tr>
+                    <td><b>Line ID</b></td>
+                    <td>{{ student.line | missingfilter }} </td>
+                </tr>
+                {% endif %}
+
+                {% if student.know_us_from %}
+                <tr>
+                    <td><b>Know Us From</b></td>
+                    <td>{{ student.know_us_from | missingfilter }} </td>
+                </tr>
+                {% endif %}
+
+                {% if student.total_value %}
+                <tr>
+                    <td><b>Total Value</b></td>
+                    <td>{{ student.total_value | missingfilter }} </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    <hr>
+    
+    {% if transactions %}
+    <h2> Transactions </h2>
+    <div class="table-responsive">
+        <table id="transaction" class="table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Latest Edited Time</th>
+                    <th>Student Name</th>
+                    <th>Transaction Status</th>
+                    <th>Total Transaction Value</th>
+                    <th>Remaining Outstanding</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td> {{ transaction.latest_timestamp | datetimefilter }} </td>
+                <td> <a href= "/student/{{transaction.student_id}}"> {{ transaction.student_full_name }} </a></td>
+                <td> {{ transaction.transaction_status }} </td>
+                <td> {{ transaction.total_value }} </td>
+                <td> {{ transaction.remaining_outstanding }} </td>
+                <td> <a href="/transaction/{{transaction.id}}" class="btn btn-primary btn-sm">Edit</a> </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    
+    <hr>
+    {% if test_scores %}
+        {% set count_test_score_1 = namespace(value=0) %}
+        {% set count_test_score_2 = namespace(value=0) %}
+        {% set count_test_score_3 = namespace(value=0) %}
+        {% set count_test_score_4 = namespace(value=0) %}
+        {% set count_test_score_5 = namespace(value=0) %}
+        {% set count_test_score_6 = namespace(value=0) %}
+        
+        {% for test in test_scores %}
+            {% if test.cat_1_score is not none %}
+                {% set count_test_score_1.value = count_test_score_1.value + 1 %}
+            {% endif %}
+            
+            {% if test.cat_2_score is not none %}
+                {% set count_test_score_2.value = count_test_score_2.value + 1 %}
+            {% endif %}
+
+            {% if test.cat_3_score is not none %}
+                {% set count_test_score_3.value = count_test_score_3.value + 1 %}
+            {% endif %}
+
+            {% if test.cat_4_score is not none %}
+                {% set count_test_score_4.value = count_test_score_4.value + 1 %}
+            {% endif %}
+
+            {% if test.cat_5_score is not none %}
+                {% set count_test_score_5.value = count_test_score_5.value + 1 %}
+            {% endif %}
+
+            {% if test.cat_6_score is not none %}
+                {% set count_test_score_6.value = count_test_score_6.value + 1 %}
+            {% endif %}
+        {% endfor %}
+
+        
+        <h2>  Test Scores </h2>
+        <div class="table-responsive">
+            <table id='test_score' class="table table-bordered table-hover" style="width:100%">
+                <tr>
+                    <th>Exam Date</th>
+                    <th>Exam Name</th>
+                    <th>Mock Test</th>
+
+                    {% if count_test_score_1.value > 0 %}
+                        <th>Category 1: Name</th>
+                        <th>Category 1: Score</th>
+                    {% endif %}
+
+                    {% if count_test_score_2.value > 0 %}
+                        <th>Category 2: Name</th>
+                        <th>Category 2: Score</th>
+                    {% endif %}
+                    
+                    {% if count_test_score_3.value > 0 %}
+                        <th>Category 3: Name</th>
+                        <th>Category 3: Score</th>
+                    {% endif %}
+                    
+                    {% if count_test_score_4.value > 0 %}
+                        <th>Category 4: Name</th>
+                        <th>Category 4: Score</th>
+                    {% endif %}
+                    
+                    {% if count_test_score_5.value > 0 %}
+                        <th>Category 5: Name</th>
+                        <th>Category 5: Score</th>
+                    {% endif %}
+                    
+                    {% if count_test_score_6.value > 0 %}
+                        <th>Category 6: Name</th>
+                        <th>Category 6: Score</th>
+                    {% endif %}
+                    
+                    
+                    
+                </tr>
+                {% for test in test_scores %}
+                <tr>
+                    {% if test.exam_date is not none %}
+                        <td> {{ test.exam_date | shortdatefilter }} </td>
+                    {% else %}
+                    <td> {{ test.exam_date }} </td>
+                    {% endif %}
+                    
+                    <td> {{ test.mock_flag | mockfilter }} </td>
+                    <td> {{ test.exam_name }} </td>
+                    
+                    
+                    {% if count_test_score_1.value > 0 %}
+                        <td> {{ test.cat_1_name }} </td>
+                        <td> {{ test.cat_1_score }} </td>
+                    {% endif %}
+
+                    {% if count_test_score_2.value > 0 %}
+                        <td> {{ test.cat_2_name }} </td>
+                        <td> {{ test.cat_2_score }} </td>
+                    {% endif %}
+                    
+                    {% if count_test_score_3.value > 0 %}
+                        <td> {{ test.cat_3_name }} </td>
+                        <td> {{ test.cat_3_score }} </td>
+                    {% endif %}
+
+                    {% if count_test_score_4.value > 0 %}
+                        <td> {{ test.cat_4_name }} </td>
+                        <td> {{ test.cat_4_score }} </td>
+                    {% endif %}
+
+                    {% if count_test_score_5.value > 0 %}
+                        <td> {{ test.cat_5_name }} </td>
+                        <td> {{ test.cat_5_score }} </td>
+                    {% endif %}
+
+                    {% if count_test_score_6.value > 0 %}
+                        <td> {{ test.cat_6_name }} </td>
+                        <td> {{ test.cat_6_score }} </td>
+                    {% endif %}
+                    
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+    
+
+{% endblock %}
+

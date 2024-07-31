@@ -1,0 +1,62 @@
+{% extends "base_wo_ending_script.html" %}
+
+
+
+{% block app_content %}
+
+    {% block scripts %}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.24/sorting/datetime-moment.js"></script>
+    
+    <script>
+         $(document).ready(function() {
+            $.fn.dataTable.moment( 'DD-MMM-YYYY H:mm:ss' );
+            $('#transaction').DataTable({
+                "order": [[ 0, "desc" ]]
+            });
+        } );
+    </script>
+
+    {% endblock %}
+
+    <h1>Transaction Records</h1>
+
+    <hr>
+    {% if transactions %}
+    <h2> Transactions </h2>
+    <div class="table-responsive">
+        <table id="transaction" class="display compact" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Latest Edited Time</th>
+                    <th>Creator</th>
+                    <th>Student Name</th>
+                    <th>Transaction Status</th>
+                    <th>Total Transaction Value</th>
+                    <th>Remaining Outstanding</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td> {{ transaction.latest_timestamp | datetimefilter }} </td>
+                <td> {{ transaction.create_user }} </td>
+                <td> <a href= "/student/{{transaction.student_id}}"> {{ transaction.student_full_name }} </a></td>
+                <td> {{ transaction.transaction_status }} </td>
+                <td> {{ transaction.total_value }} </td>
+                <td> {{ transaction.remaining_outstanding }} </td>
+                <td> <a href="/transaction/{{transaction.id}}" class="btn btn-primary btn-sm">Edit</a> </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    
+
+{% endblock %}

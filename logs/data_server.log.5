@@ -1,0 +1,1258 @@
+2020-08-25 13:14:08,340 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-25 13:14:18,128 ERROR: Exception on /favicon.ico [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\never\website\app\errors\handlers.py", line 8, in not_found_error
+    return render_template('errors/404.html'), 404
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\errors\404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 62, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\errors\404.html", line 5, in block "app_content"
+    <p><a href="{{ url_for('index') }}">Back</a></p>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2020-08-25 13:14:21,367 ERROR: Exception on /favicon.ico [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\never\website\app\errors\handlers.py", line 8, in not_found_error
+    return render_template('errors/404.html'), 404
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\errors\404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 62, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\errors\404.html", line 5, in block "app_content"
+    <p><a href="{{ url_for('index') }}">Back</a></p>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2020-08-25 13:14:22,548 ERROR: Exception on /favicon.ico [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\never\website\app\errors\handlers.py", line 8, in not_found_error
+    return render_template('errors/404.html'), 404
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\errors\404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 62, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\errors\404.html", line 5, in block "app_content"
+    <p><a href="{{ url_for('index') }}">Back</a></p>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2020-08-25 13:14:23,345 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 58, in transaction
+    return render_template('transaction.html', title = 'Transaction', form = form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\loaders.py", line 115, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: transaction.html
+2020-08-25 13:14:23,415 ERROR: Exception on /favicon.ico [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\never\website\app\errors\handlers.py", line 8, in not_found_error
+    return render_template('errors/404.html'), 404
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\errors\404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 62, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\errors\404.html", line 5, in block "app_content"
+    <p><a href="{{ url_for('index') }}">Back</a></p>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2020-08-25 13:14:25,803 ERROR: Exception on /favicon.ico [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\never\website\app\errors\handlers.py", line 8, in not_found_error
+    return render_template('errors/404.html'), 404
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\errors\404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 62, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\errors\404.html", line 5, in block "app_content"
+    <p><a href="{{ url_for('index') }}">Back</a></p>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2020-08-26 13:03:43,906 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:02:08,509 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:02:33,083 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:02:43,534 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2639, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\deprecations.py", line 139, in warned
+    return fn(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 979, in _join_condition
+    % (a.description, b.description, hint)
+sqlalchemy.exc.NoForeignKeysError: Can't find any foreign key relationships between 'users' and 'transactions'.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3301, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1966, in _post_configure_properties
+    prop.init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\interfaces.py", line 197, in init
+    self.do_init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2077, in do_init
+    self._setup_join_conditions()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2157, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2524, in __init__
+    self._determine_joins()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2667, in _determine_joins
+    from_=nfe,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship User.transactions - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+2020-08-31 22:05:46,947 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3297, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class User->users'. Original exception was: Could not determine join condition between parent/child tables on relationship User.transactions - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+2020-08-31 22:06:24,278 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3297, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class User->users'. Original exception was: Could not determine join condition between parent/child tables on relationship User.transactions - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+2020-08-31 22:16:32,172 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:17:08,775 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:17:13,887 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:17:17,157 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:17:20,437 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:17:31,033 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2639, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\deprecations.py", line 139, in warned
+    return fn(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 965, in _join_condition
+    a, b, constraints, consider_as_foreign_keys
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 1082, in _joincond_trim_constraints
+    "join explicitly." % (a.description, b.description)
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'user' and 'transaction'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3301, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1966, in _post_configure_properties
+    prop.init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\interfaces.py", line 197, in init
+    self.do_init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2077, in do_init
+    self._setup_join_conditions()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2157, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2524, in __init__
+    self._determine_joins()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2698, in _determine_joins
+    from_=afe,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship User.transactions - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2020-08-31 22:22:55,034 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:23:07,304 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:23:38,822 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:23:46,836 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:23:55,717 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:24:04,530 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\ext\declarative\clsregistry.py", line 326, in __call__
+    x = eval(self.arg, globals(), self._dict)
+  File "<string>", line 1, in <module>
+NameError: name 'usertransaction' is not defined
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3301, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1966, in _post_configure_properties
+    prop.init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\interfaces.py", line 197, in init
+    self.do_init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2076, in do_init
+    self._process_dependent_arguments()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2105, in _process_dependent_arguments
+    setattr(self, attr, attr_value())
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\ext\declarative\clsregistry.py", line 333, in __call__
+    self._raise_for_name(n.args[0], n)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\ext\declarative\clsregistry.py", line 301, in _raise_for_name
+    from_=err,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+sqlalchemy.exc.InvalidRequestError: When initializing mapper mapped class User->user, expression 'usertransaction' failed to locate a name ("name 'usertransaction' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.User'> class after both dependent classes have been defined.
+2020-08-31 22:25:30,429 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:25:36,878 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:25:40,844 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:25:46,732 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3301, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1966, in _post_configure_properties
+    prop.init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\interfaces.py", line 197, in init
+    self.do_init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2077, in do_init
+    self._setup_join_conditions()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2157, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2524, in __init__
+    self._determine_joins()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2624, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\deprecations.py", line 139, in warned
+    return fn(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 960, in _join_condition
+    a, a_subset, b, consider_as_foreign_keys
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 1014, in _joincond_scan_left_right
+    b.foreign_keys, key=lambda fk: fk.parent._creation_order
+AttributeError: type object 'UserTransaction' has no attribute 'foreign_keys'
+2020-08-31 22:27:57,732 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:28:03,350 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:28:06,442 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:28:11,504 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2639, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\deprecations.py", line 139, in warned
+    return fn(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 965, in _join_condition
+    a, b, constraints, consider_as_foreign_keys
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 1082, in _joincond_trim_constraints
+    "join explicitly." % (a.description, b.description)
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'user' and 'transaction'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3301, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1966, in _post_configure_properties
+    prop.init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\interfaces.py", line 197, in init
+    self.do_init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2077, in do_init
+    self._setup_join_conditions()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2157, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2524, in __init__
+    self._determine_joins()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2698, in _determine_joins
+    from_=afe,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship User.transactions - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2020-08-31 22:29:36,256 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:29:40,044 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:29:43,262 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:29:49,737 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\ext\declarative\clsregistry.py", line 326, in __call__
+    x = eval(self.arg, globals(), self._dict)
+  File "<string>", line 1, in <module>
+NameError: name 'userlevel' is not defined
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3301, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1966, in _post_configure_properties
+    prop.init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\interfaces.py", line 197, in init
+    self.do_init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2076, in do_init
+    self._process_dependent_arguments()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2105, in _process_dependent_arguments
+    setattr(self, attr, attr_value())
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\ext\declarative\clsregistry.py", line 333, in __call__
+    self._raise_for_name(n.args[0], n)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\ext\declarative\clsregistry.py", line 301, in _raise_for_name
+    from_=err,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+sqlalchemy.exc.InvalidRequestError: When initializing mapper mapped class User->user, expression 'userlevel' failed to locate a name ("name 'userlevel' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.User'> class after both dependent classes have been defined.
+2020-08-31 22:31:04,054 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:31:09,457 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:31:12,049 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-08-31 22:31:18,077 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 20, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1353, in _configure_all
+    configure_mappers()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 3301, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\mapper.py", line 1966, in _post_configure_properties
+    prop.init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\interfaces.py", line 197, in init
+    self.do_init()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2077, in do_init
+    self._setup_join_conditions()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2157, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2524, in __init__
+    self._determine_joins()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\relationships.py", line 2624, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\deprecations.py", line 139, in warned
+    return fn(*args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 960, in _join_condition
+    a, a_subset, b, consider_as_foreign_keys
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\selectable.py", line 1014, in _joincond_scan_left_right
+    b.foreign_keys, key=lambda fk: fk.parent._creation_order
+AttributeError: type object 'UserLevel' has no attribute 'foreign_keys'
+2020-09-01 00:09:48,176 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:10:10,357 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:11:04,400 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:11:17,026 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:11:47,021 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:11:55,647 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:12:00,894 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:12:07,822 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:12:21,742 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:12:34,571 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:12:55,051 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:19:25,133 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:20:00,471 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:20:20,778 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:21:29,485 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:21:54,214 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:23:11,895 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:23:27,329 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:23:38,970 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 00:25:25,449 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 12:52:02,594 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 12:52:08,936 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 13:12:25,365 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 13:12:34,526 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 13:16:01,124 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 13:16:09,013 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 13:16:14,662 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 13:37:16,035 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 13:48:55,738 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 13:48:59,533 ERROR: Exception on / [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 24, in index
+    return render_template('index.html', title='Home Page')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 838, in update_template_context
+    context.update(func())
+  File "C:\Users\never\website\app\main\__init__.py", line 7, in inject_permissions
+    return dict(Permission=Permission)
+NameError: name 'Permission' is not defined
+2020-09-01 13:51:27,121 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 14:04:05,398 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 14:04:08,764 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 14:04:37,401 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 14:05:09,773 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 14:07:11,812 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-01 14:08:05,279 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-02 21:32:02,600 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-02 21:32:27,803 ERROR: Exception on /add_transaction [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 121, in transaction
+    return render_template('add_transaction.html', title = 'Transaction', form = form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\add_transaction.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\add_transaction.html", line 220, in block "app_content"
+    {{ form.overall_discount(size=32) }}<br>
+jinja2.exceptions.UndefinedError: 'app.main.forms.TransactionForm object' has no attribute 'overall_discount'
+2020-09-02 21:33:17,612 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-02 21:42:26,529 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-02 21:43:29,359 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-02 22:11:10,090 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-04 22:06:51,620 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-04 22:07:07,444 ERROR: Exception on / [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 24, in index
+    return render_template('index.html', title='Home Page')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\index.html", line 12, in block "app_content"
+    <a href="{{ url_for('main.add_transaction') }}">Create an invoice/ a receipt</a>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.add_transaction'. Did you mean 'main.transaction' instead?
+2020-09-04 22:08:04,075 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-04 22:14:29,376 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:04:42,583 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:15:11,830 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:15:20,305 ERROR: Exception on /auth/login [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column user.user_country does not exist
+LINE 1: ...mail, "user".password_hash AS user_password_hash, "user".use...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 21, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3402, in first
+    ret = list(self[0:1])
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3176, in __getitem__
+    return list(res)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3508, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\query.py", line 3533, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1130, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column user.user_country does not exist
+LINE 1: ...mail, "user".password_hash AS user_password_hash, "user".use...
+                                                             ^
+
+[SQL: SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".password_hash AS user_password_hash, "user".user_country AS user_user_country, "user".last_seen AS user_last_seen, "user".about_me AS user_about_me, "user".role_id AS user_role_id 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'username_1': 'example', 'param_1': 1}]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2020-09-06 22:15:59,313 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:16:05,991 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:16:10,793 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:17:31,249 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:18:58,368 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:19:08,677 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:19:13,587 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:19:21,490 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:21:56,565 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:22:00,000 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-06 22:25:32,275 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 09:44:23,288 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 09:47:51,450 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 09:48:00,906 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 09:49:46,541 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 09:51:37,140 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 09:54:18,243 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 09:55:33,965 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 09:56:08,617 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 10:06:01,979 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 10:06:11,580 ERROR: Exception on / [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 24, in index
+    return render_template('index.html', title='Home Page')
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\never\website\app\templates\base.html", line 3, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\never\website\app\templates\base.html", line 63, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\never\website\app\templates\index.html", line 12, in block "app_content"
+    <a href="{{ url_for('main.transaction') }}">Create an invoice/ a receipt</a>
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.transaction'. Did you mean 'main.add_transaction' instead?
+2020-09-07 10:07:04,925 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:76]
+2020-09-07 10:09:45,350 ERROR: Exception on /auth/register [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_user\decorators.py", line 129, in decorator
+    user_manager = current_app.user_manager
+  File "c:\users\never\website\website_dev\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Flask' object has no attribute 'user_manager'
+2020-09-07 10:18:10,722 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 10:19:05,823 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 10:29:17,383 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 10:33:24,086 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 17:12:03,789 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 17:12:12,120 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 17:12:33,393 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 17:12:39,713 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 17:55:48,144 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 19:36:23,645 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 19:36:29,376 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 19:36:38,919 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 21:53:52,818 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:04:28,678 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:05:28,975 ERROR: Exception on /auth/register [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 50, in register
+    country=form.country.data, role_id=role.id)
+AttributeError: 'NoneType' object has no attribute 'id'
+2020-09-07 22:06:54,515 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:08:54,303 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:10:16,996 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:10:24,527 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:10:42,381 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:11:37,533 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:12:35,677 ERROR: Exception on /auth/register [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 50, in register
+    country=form.country.data, role_id=role.id)
+  File "<string>", line 4, in __init__
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\state.py", line 433, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\orm\state.py", line 430, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "C:\Users\never\website\app\models.py", line 73, in __init__
+    super(User, self).__init__(**kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 840, in _declarative_constructor
+    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+TypeError: 'country' is an invalid keyword argument for User
+2020-09-07 22:13:17,092 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:14:07,925 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:14:37,279 ERROR: Exception on /auth/register [POST] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\never\website\app\auth\routes.py", line 56, in register
+    'email/confirm', user=user, token=token)
+TypeError: send_email() got an unexpected keyword argument 'user'
+2020-09-07 22:18:37,880 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:19:25,452 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-07 22:20:29,300 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 19:33:09,026 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 19:33:16,286 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 19:40:34,384 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 19:40:51,725 ERROR: Exception on /service_add [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 157, in add_service
+    form = ServiceForm()
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\form.py", line 268, in __init__
+    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\form.py", line 51, in __init__
+    field = meta.bind_field(self, unbound_field, options)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\meta.py", line 27, in bind_field
+    return unbound_field.bind(form=form, **options)
+  File "c:\users\never\website\website_dev\lib\site-packages\wtforms\fields\core.py", line 376, in bind
+    return self.field_class(*self.args, **kw)
+TypeError: __init__() got an unexpected keyword argument 'choices'
+2020-09-08 19:41:33,747 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 19:52:14,074 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 19:53:52,170 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 19:53:58,479 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 19:54:42,646 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:43:22,893 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:43:30,958 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:43:47,889 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:46:00,072 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:46:05,749 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:46:10,693 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:46:20,109 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:49:41,042 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 21:54:23,992 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 22:04:34,171 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]
+2020-09-08 22:19:34,426 INFO: EduSmith Data Server Startup [in C:\Users\never\website\app\__init__.py:77]

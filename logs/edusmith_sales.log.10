@@ -1,0 +1,121 @@
+2021-02-14 20:43:46,096 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:118]
+2021-02-14 20:43:46,097 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:130]
+2021-02-15 12:50:30,927 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 12:50:30,928 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 12:51:42,092 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 12:51:42,092 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 12:52:27,561 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 12:52:27,562 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 12:54:29,605 INFO: Edusmith Sales Portal startup [in C:\Users\never\website\app\__init__.py:119]
+2021-02-15 12:54:29,606 INFO: EduSmith Data Server [in C:\Users\never\website\app\__init__.py:131]
+2021-02-15 12:54:30,628 ERROR: Exception on /user/edusmith_admin [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 66, in user
+    form=form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\user.html", line 1, in top-level template code
+    {% extends "base_wo_ending_script.html" %}
+  File "C:\Users\never\website\app\templates\base_wo_ending_script.html", line 3, in top-level template code
+    {% extends 'bootstrap_base_wo_script.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: bootstrap_base_wo_script.html
+2021-02-15 12:54:34,594 ERROR: Exception on /user/edusmith_admin [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 66, in user
+    form=form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\user.html", line 1, in top-level template code
+    {% extends "base_wo_ending_script.html" %}
+  File "C:\Users\never\website\app\templates\base_wo_ending_script.html", line 3, in top-level template code
+    {% extends 'bootstrap_base_wo_script.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: bootstrap_base_wo_script.html
+2021-02-15 12:54:36,236 ERROR: Exception on /user/edusmith_admin [GET] [in c:\users\never\website\website_dev\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\never\website\app\main\routes.py", line 66, in user
+    form=form)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\never\website\website_dev\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\never\website\app\templates\user.html", line 1, in top-level template code
+    {% extends "base_wo_ending_script.html" %}
+  File "C:\Users\never\website\app\templates\base_wo_ending_script.html", line 3, in top-level template code
+    {% extends 'bootstrap_base_wo_script.html' %}
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\never\website\website_dev\lib\site-packages\flask\templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: bootstrap_base_wo_script.html

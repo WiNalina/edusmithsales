@@ -1,0 +1,3227 @@
+{% extends "base_wo_ending_script.html" %}
+
+{% block app_content %}
+    {% block scripts %}
+        <style>
+        td, th {
+            border: 1px solid #dddddd;
+            margin: auto;
+            padding: 5px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        
+
+        </style>
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        
+
+        <script>
+            $( function() {
+                $( "#accordion" ).accordion({
+                    collapsible: true,
+                    heightStyle: "content"
+                });
+                $( ".selector" ).checkboxradio({
+                    classes: {
+                        "ui-checkboxradio": "highlight"
+                    }
+                });
+                $( ".controlgroup" ).controlgroup()
+                $( ".count" ).spinner();
+
+                $( "#payment_method" ).selectmenu();
+
+                $( "#service_1_office" ).selectmenu();
+                $( "#service_2_office" ).selectmenu();
+                $( "#service_3_office" ).selectmenu();
+                $( "#service_4_office" ).selectmenu();
+                $( "#service_5_office" ).selectmenu();
+                $( "#service_6_office" ).selectmenu();
+
+                $( "#service_1_amortization_type" ).selectmenu();
+                $( "#service_2_amortization_type" ).selectmenu();
+                $( "#service_3_amortization_type" ).selectmenu();
+                $( "#service_4_amortization_type" ).selectmenu();
+                $( "#service_5_amortization_type" ).selectmenu();
+                $( "#service_6_amortization_type" ).selectmenu();
+
+                $( "#service_1_refund_status" ).selectmenu();
+                $( "#service_2_refund_status" ).selectmenu();
+                $( "#service_3_refund_status" ).selectmenu();
+                $( "#service_4_refund_status" ).selectmenu();
+                $( "#service_5_refund_status" ).selectmenu();
+                $( "#service_6_refund_status" ).selectmenu();
+                
+            } );
+            
+            $(document).ready(function(){
+            var service_array=[];
+            var price_array=[];
+            var service_type_array=[];
+            var teacher_array=[];
+            var student_name_array=[];
+            var student_credit_array=[];
+            var company_name_array=[];
+            var company_tax_id_array=[];
+            var company_address_array=[];
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            var note_area = document.getElementById('note_area'); 
+
+            $(window).keydown(function(event){
+                if(event.keyCode == 13 && event.target !== note_area) {
+                event.preventDefault();
+                return false;
+                }
+            });
+
+            function loadServices(){
+                $.ajax({
+                    url: '/services_local',
+                    dataType: 'json',
+                    success: function(data){
+                        for (var i = 0; i < data.length; i++ ) {
+                            service_array.push(data[i].name);
+                            price_array.push(data[i].price);
+                            service_type_array.push(data[i].category)
+                        }
+                    }
+                    })
+            };
+
+            function loadStudents(){
+                $.ajax({
+                    url: '/students_local',
+                    dataType: 'json',
+                    success: function(data){
+                        for (var i = 0; i < data.length; i++ ) {
+                            student_name_array.push(data[i].name);
+                            student_credit_array.push(data[i].credit_value)
+                            company_name_array.push(data[i].company_name);
+                            company_tax_id_array.push(data[i].company_tax_id);
+                            company_address_array.push(data[i].company_address);
+                        }
+                    }
+                    })
+            };
+
+            function loadTeachers(){
+                $.ajax({
+                    url: '/teachers_local',
+                    dataType: 'json',
+                    success: function(data){
+                        for (var i = 0; i < data.length; i++ ) {
+                            teacher_array.push(data[i].name);
+                        }
+                    }
+                })
+            };
+            
+            loadServices();
+            loadStudents();
+            loadTeachers();
+
+            if($('#use_company_info_flag').is(':checked')) {
+                $('.company_info').show();
+            }
+            else{
+                $('.company_info').hide();
+            }
+
+            $('#use_company_info_flag').click(function() {
+                if($('#use_company_info_flag').is(':checked')) {
+                    $('.company_info').show();
+                }
+                else{
+                    $('.company_info').hide();
+                }
+            });
+
+
+            if ($('#payment_method').val() == 'Credit Card' || $('#payment_method').val() == 'Debit Card'){
+                $('.div_card_info').show();
+            }
+            else{
+                $('.div_card_info').hide();
+            }
+            $('#payment_method').on('selectmenuchange', function() {
+                if ($('#payment_method').val() == 'Credit Card' || $('#payment_method').val() == 'Debit Card'){
+                    $('.div_card_info').show();
+                }
+                else{
+                    $('.div_card_info').hide();
+                }
+            });
+
+            
+
+            function fillstudentRelatedData(val) {
+                var index = $.inArray( val, student_name_array );
+                $('input#client_company_name').val(company_name_array[index]);
+                $('input#client_address').val(company_address_array[index]);
+                $('input#client_tax_id').val(company_tax_id_array[index]);
+                $('input#credit_outstanding').val(student_credit_array[index]);
+            };
+
+            function preFillStudentRelatedData() {
+                if ($('#student_full_name').val() != "")
+                { 
+                    fillstudentRelatedData($('input#student_full_name').val());
+                }  	
+            };
+
+            $(function() {
+                $.ajax({
+                    url: '{{ url_for("main.students_local") }}'
+                    }).done(function (data) {
+                        preFillStudentRelatedData();
+                        $('#student_full_name').autocomplete({
+                            source: student_name_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fillstudentRelatedData(val);
+                            }
+                        });
+                    });
+                });
+            
+            $(function() {
+                $.ajax({
+                    url: '{{ url_for("main.services_local") }}'
+                    }).done(function (data) {
+                        $('#service_1_name').autocomplete({
+                            source: service_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fillOtherValues_1(val);
+                            }
+                        });
+                        $('#service_2_name').autocomplete({
+                            source: service_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fillOtherValues_2(val);
+                            }
+                        });
+                        $('#service_3_name').autocomplete({
+                            source: service_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fillOtherValues_3(val);
+                            }
+                        });
+                        $('#service_4_name').autocomplete({
+                            source: service_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fillOtherValues_4(val);
+                            }
+                        });
+                        $('#service_5_name').autocomplete({
+                            source: service_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fillOtherValues_5(val);
+                            }
+                        });
+                        $('#service_6_name').autocomplete({
+                            source: service_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fillOtherValues_6(val);
+                            }
+                        });
+                        
+                    });
+            });
+
+            function fillOtherValues_1(val) {
+                var index = $.inArray( val, service_array );
+                $('input#service_1_price').val(price_array[index]);
+            };
+                
+            $('#service_1_name').change(calculate_1);
+            $('#service_1_price').change(calculate_1);
+            $('#service_1_count').change(calculate_1);
+            $('#service_1_discount_value').change(calculate_1);
+            $('#overall_discount').change(calculate_1);
+                
+
+            function calculate_1(e)
+            {
+                var value_after_discount = 0.0;
+                var initial_value = $('#service_1_price').val() * 1 * $('#service_1_count').val() * 1;
+                var discount_value = 0.0;
+                
+                if ($('#service_1_discount_value').val() >= 1){
+                    discount_value = $('#service_1_discount_value').val() * 1;
+                    
+                    if($('#overall_discount').val() * 1 >= 1){
+                        discount_value = discount_value + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = discount_value + ($('#overall_discount').val() * 1) * initial_value;
+                    }
+                }
+                else{
+                    if($('#overall_discount').val() >= 1){
+                        discount_value = initial_value * ($('#service_1_discount_value').val() * 1) + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = initial_value * ($('#service_1_discount_value').val() * 1 + $('#overall_discount').val() * 1);
+                    }
+                }
+
+                discount_value = discount_value.toFixed();
+                value_after_discount = initial_value - discount_value;
+                
+                if(value_after_discount < 0)
+                {
+                    value_after_discount = 0;
+                }
+                
+                $('#service_1_final_price').val(value_after_discount);
+            }
+                
+
+            var service_1_date_1 = new Date($('#service_1_start_date').val());
+            document.getElementById("service_1_date_1").innerHTML = months[service_1_date_1.getMonth()] + ", " + service_1_date_1.getFullYear();
+
+            var service_1_date_2 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 1, 1)
+            document.getElementById("service_1_date_2").innerHTML = months[service_1_date_2.getMonth()] + ", " + service_1_date_2.getFullYear();
+
+            var service_1_date_3 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 2, 1)
+            document.getElementById("service_1_date_3").innerHTML = months[service_1_date_3.getMonth()] + ", " + service_1_date_3.getFullYear();
+
+            var service_1_date_4 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 3, 1)
+            document.getElementById("service_1_date_4").innerHTML = months[service_1_date_4.getMonth()] + ", " + service_1_date_4.getFullYear();
+
+            var service_1_date_5 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 4, 1)
+            document.getElementById("service_1_date_5").innerHTML = months[service_1_date_5.getMonth()] + ", " + service_1_date_5.getFullYear();
+            
+            var service_1_date_6 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 5, 1)
+            document.getElementById("service_1_date_6").innerHTML = months[service_1_date_6.getMonth()] + ", " + service_1_date_6.getFullYear();
+            
+
+            $('#service_1_start_date').change(function() {
+                var service_1_date_1 = new Date($('#service_1_start_date').val());
+                document.getElementById("service_1_date_1").innerHTML = months[service_1_date_1.getMonth()] + ", " + service_1_date_1.getFullYear() + "</span>";
+
+                var service_1_date_2 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 1, 1)
+                document.getElementById("service_1_date_2").innerHTML = months[service_1_date_2.getMonth()] + ", " + service_1_date_2.getFullYear();
+
+                var service_1_date_3 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 2, 1)
+                document.getElementById("service_1_date_3").innerHTML = months[service_1_date_3.getMonth()] + ", " + service_1_date_3.getFullYear();
+
+                var service_1_date_4 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 3, 1)
+                document.getElementById("service_1_date_4").innerHTML = months[service_1_date_4.getMonth()] + ", " + service_1_date_4.getFullYear();
+
+                var service_1_date_5 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 4, 1)
+                document.getElementById("service_1_date_5").innerHTML = months[service_1_date_5.getMonth()] + ", " + service_1_date_5.getFullYear();
+                
+                var service_1_date_6 = new Date(service_1_date_1.getFullYear(), service_1_date_1.getMonth() + 5, 1)
+                document.getElementById("service_1_date_6").innerHTML = months[service_1_date_6.getMonth()] + ", " + service_1_date_6.getFullYear();
+
+            });
+
+                
+            if($('#service_1_amortization_type').val() == 'Constant'){
+                $('.div_end_date_service_1').show();
+                $('.div_table_service_1').hide();
+                $('.hours_per_week_service_1').hide();
+            }
+            else if ($('#service_1_amortization_type').val() == 'Custom'){
+                $('.div_table_service_1').show();
+                $('.div_end_date_service_1').hide();
+                $('.hours_per_week_service_1').hide();
+            }
+            else{
+                $('.hours_per_week_service_1').show();
+                $('.div_table_service_1').hide();
+                $('.div_end_date_service_1').hide();
+            }
+
+
+            $('#service_1_amortization_type').on('selectmenuchange', function() {
+                if($('#service_1_amortization_type').val() == 'Constant'){
+                    $('.div_end_date_service_1').show();
+                    $('.div_table_service_1').hide();
+                    $('.hours_per_week_service_1').hide();
+                }
+                else if ($('#service_1_amortization_type').val() == 'Custom'){
+                    $('.div_table_service_1').show();
+                    $('.div_end_date_service_1').hide();
+                    $('.hours_per_week_service_1').hide();
+                }
+                else{
+                    $('.hours_per_week_service_1').show();
+                    $('.div_table_service_1').hide();
+                    $('.div_end_date_service_1').hide();
+                }
+            });
+
+            if($('#service_1_refund_flag').val() == ':checked'){
+                $('.service_1_refund').show();
+            }
+            else{
+                $('.service_1_refund').hide();
+            }
+            $('#service_1_refund_flag').click(function() {
+                if($('#service_1_refund_flag').is(':checked')) {
+                    $('.service_1_refund').show();
+                }
+                else{
+                    $('.service_1_refund').hide();
+                }
+            });
+
+            if($('#service_1_refund_status').val() == 'Partial' || $('#service_1_refund_status').val() == 'Full'){
+                $('.div_credit_note_service_1').show();
+            }
+            else{
+                $('.div_credit_note_service_1').hide();
+            }
+            
+            $('#service_1_refund_status').on('selectmenuchange', function() {
+                if($('#service_1_refund_status').val() == 'Partial' || $('#service_1_refund_status').val() == 'Full'){
+                    $('.div_credit_note_service_1').show();
+                }
+                else{
+                    $('.div_credit_note_service_1').hide();
+                }
+            });
+
+            function fillOtherValues_2(val) {
+                var index = $.inArray( val, service_array );
+                $('input#service_2_price').val(price_array[index]);
+            }
+
+            $('#service_2_name').change(calculate_2);
+            $('#service_2_price').change(calculate_2);
+            $('#service_2_count').change(calculate_2);
+            $('#service_2_discount_value').change(calculate_2);
+            $('#overall_discount').change(calculate_2);
+
+            function calculate_2(e)
+            {
+                var value_after_discount = 0.0;
+                var initial_value = $('#service_2_price').val() * 1 * $('#service_2_count').val() * 1;
+                var discount_value = 0.0;
+                
+                if ($('#service_2_discount_value').val() >= 1){
+                    discount_value = $('#service_2_discount_value').val() * 1;
+                    
+                    if($('#overall_discount').val() * 1 >= 1){
+                        discount_value = discount_value + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = discount_value + ($('#overall_discount').val() * 1) * initial_value;
+                    }
+                }
+                else{
+                    if($('#overall_discount').val() >= 1){
+                        discount_value = initial_value * ($('#service_2_discount_value').val() * 1) + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = initial_value * ($('#service_2_discount_value').val() * 1 + $('#overall_discount').val() * 1);
+                    }
+                }
+
+                discount_value = discount_value.toFixed();
+                value_after_discount = initial_value - discount_value;
+                
+                if(value_after_discount < 0)
+                {
+                    value_after_discount = 0;
+                }
+                
+                $('#service_2_final_price').val(value_after_discount);
+            }
+
+            var service_2_date_1 = new Date($('#service_2_start_date').val());
+            document.getElementById("service_2_date_1").innerHTML = months[service_2_date_1.getMonth()] + ", " + service_2_date_1.getFullYear();
+
+            var service_2_date_2 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 1, 1)
+            document.getElementById("service_2_date_2").innerHTML = months[service_2_date_2.getMonth()] + ", " + service_2_date_2.getFullYear();
+
+            var service_2_date_3 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 2, 1)
+            document.getElementById("service_2_date_3").innerHTML = months[service_2_date_3.getMonth()] + ", " + service_2_date_3.getFullYear();
+
+            var service_2_date_4 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 3, 1)
+            document.getElementById("service_2_date_4").innerHTML = months[service_2_date_4.getMonth()] + ", " + service_2_date_4.getFullYear();
+
+            var service_2_date_5 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 4, 1)
+            document.getElementById("service_2_date_5").innerHTML = months[service_2_date_5.getMonth()] + ", " + service_2_date_5.getFullYear();
+            
+            var service_2_date_6 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 5, 1)
+            document.getElementById("service_2_date_6").innerHTML = months[service_2_date_6.getMonth()] + ", " + service_2_date_6.getFullYear();
+            
+
+            $('#service_2_start_date').change(function() {
+                var service_2_date_1 = new Date($('#service_2_start_date').val());
+                document.getElementById("service_2_date_1").innerHTML = months[service_2_date_1.getMonth()] + ", " + service_2_date_1.getFullYear();
+
+                var service_2_date_2 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 1, 1)
+                document.getElementById("service_2_date_2").innerHTML = months[service_2_date_2.getMonth()] + ", " + service_2_date_2.getFullYear();
+
+                var service_2_date_3 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 2, 1)
+                document.getElementById("service_2_date_3").innerHTML = months[service_2_date_3.getMonth()] + ", " + service_2_date_3.getFullYear();
+
+                var service_2_date_4 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 3, 1)
+                document.getElementById("service_2_date_4").innerHTML = months[service_2_date_4.getMonth()] + ", " + service_2_date_4.getFullYear();
+
+                var service_2_date_5 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 4, 1)
+                document.getElementById("service_2_date_5").innerHTML = months[service_2_date_5.getMonth()] + ", " + service_2_date_5.getFullYear();
+                
+                var service_2_date_6 = new Date(service_2_date_1.getFullYear(), service_2_date_1.getMonth() + 5, 1)
+                document.getElementById("service_2_date_6").innerHTML = months[service_2_date_6.getMonth()] + ", " + service_2_date_6.getFullYear();
+
+            });
+
+                
+            if($('#service_2_amortization_type').val() == 'Constant'){
+                $('.div_end_date_service_2').show();
+                $('.div_table_service_2').hide();
+                $('.hours_per_week_service_2').hide();
+            }
+            else if ($('#service_2_amortization_type').val() == 'Custom'){
+                $('.div_table_service_2').show();
+                $('.div_end_date_service_2').hide();
+                $('.hours_per_week_service_2').hide();
+            }
+            else{
+                $('.hours_per_week_service_2').show();
+                $('.div_table_service_2').hide();
+                $('.div_end_date_service_2').hide();
+            }
+
+            $('#service_2_amortization_type').on('selectmenuchange', function() {
+                if($('#service_2_amortization_type').val() == 'Constant'){
+                    $('.div_end_date_service_2').show();
+                    $('.div_table_service_2').hide();
+                    $('.hours_per_week_service_2').hide();
+                }
+                else if ($('#service_2_amortization_type').val() == 'Custom'){
+                    $('.div_table_service_2').show();
+                    $('.div_end_date_service_2').hide();
+                    $('.hours_per_week_service_2').hide();
+                }
+                else{
+                    $('.hours_per_week_service_2').show();
+                    $('.div_table_service_2').hide();
+                    $('.div_end_date_service_2').hide();
+                }
+            });
+
+            if($('#service_2_refund_flag').val() == ':checked'){
+                $('.service_2_refund').show();
+            }
+            else{
+                $('.service_2_refund').hide();
+            }
+            $('#service_2_refund_flag').click(function() {
+                if($('#service_2_refund_flag').is(':checked')) {
+                    $('.service_2_refund').show();
+                }
+                else{
+                    $('.service_2_refund').hide();
+                }
+            });
+
+            if($('#service_2_refund_status').val() == 'Partial' || $('#service_2_refund_status').val() == 'Full'){
+                $('.div_credit_note_service_2').show();
+            }
+            else{
+                $('.div_credit_note_service_2').hide();
+            }
+            
+            $('#service_2_refund_status').on('selectmenuchange', function() {
+                if($('#service_2_refund_status').val() == 'Partial' || $('#service_2_refund_status').val() == 'Full'){
+                    $('.div_credit_note_service_2').show();
+                }
+                else{
+                    $('.div_credit_note_service_2').hide();
+                }
+            });
+
+            function fillOtherValues_3(val) {
+                var index = $.inArray( val, service_array );
+                $('input#service_3_price').val(price_array[index]);
+            }
+
+            $('#service_3_name').change(calculate_3);
+            $('#service_3_price').change(calculate_3);
+            $('#service_3_count').change(calculate_3);
+            $('#service_3_discount_value').change(calculate_3);
+            $('#overall_discount').change(calculate_3);
+
+            function calculate_3(e)
+            {
+                var value_after_discount = 0.0;
+                var initial_value = $('#service_3_price').val() * 1 * $('#service_3_count').val() * 1;
+                var discount_value = 0.0;
+                
+                if ($('#service_3_discount_value').val() >= 1){
+                    discount_value = $('#service_3_discount_value').val() * 1;
+                    
+                    if($('#overall_discount').val() * 1 >= 1){
+                        discount_value = discount_value + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = discount_value + ($('#overall_discount').val() * 1) * initial_value;
+                    }
+                }
+                else{
+                    if($('#overall_discount').val() >= 1){
+                        discount_value = initial_value * ($('#service_3_discount_value').val() * 1) + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = initial_value * ($('#service_3_discount_value').val() * 1 + $('#overall_discount').val() * 1);
+                    }
+                }
+
+                discount_value = discount_value.toFixed();
+                value_after_discount = initial_value - discount_value;
+                
+                if(value_after_discount < 0)
+                {
+                    value_after_discount = 0;
+                }
+                
+                $('#service_3_final_price').val(value_after_discount);
+            }
+
+            var service_3_date_1 = new Date($('#service_3_start_date').val());
+            document.getElementById("service_3_date_1").innerHTML = months[service_3_date_1.getMonth()] + ", " + service_3_date_1.getFullYear();
+
+            var service_3_date_2 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 1, 1)
+            document.getElementById("service_3_date_2").innerHTML = months[service_3_date_2.getMonth()] + ", " + service_3_date_2.getFullYear();
+
+            var service_3_date_3 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 2, 1)
+            document.getElementById("service_3_date_3").innerHTML = months[service_3_date_3.getMonth()] + ", " + service_3_date_3.getFullYear();
+
+            var service_3_date_4 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 3, 1)
+            document.getElementById("service_3_date_4").innerHTML = months[service_3_date_4.getMonth()] + ", " + service_3_date_4.getFullYear();
+
+            var service_3_date_5 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 4, 1)
+            document.getElementById("service_3_date_5").innerHTML = months[service_3_date_5.getMonth()] + ", " + service_3_date_5.getFullYear();
+            
+            var service_3_date_6 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 5, 1)
+            document.getElementById("service_3_date_6").innerHTML = months[service_3_date_6.getMonth()] + ", " + service_3_date_6.getFullYear();
+            
+
+            $('#service_3_start_date').change(function() {
+                var service_3_date_1 = new Date($('#service_3_start_date').val());
+                document.getElementById("service_3_date_1").innerHTML = months[service_3_date_1.getMonth()] + ", " + service_3_date_1.getFullYear();
+
+                var service_3_date_2 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 1, 1)
+                document.getElementById("service_3_date_2").innerHTML = months[service_3_date_2.getMonth()] + ", " + service_3_date_2.getFullYear();
+
+                var service_3_date_3 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 2, 1)
+                document.getElementById("service_3_date_3").innerHTML = months[service_3_date_3.getMonth()] + ", " + service_3_date_3.getFullYear();
+
+                var service_3_date_4 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 3, 1)
+                document.getElementById("service_3_date_4").innerHTML = months[service_3_date_4.getMonth()] + ", " + service_3_date_4.getFullYear();
+
+                var service_3_date_5 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 4, 1)
+                document.getElementById("service_3_date_5").innerHTML = months[service_3_date_5.getMonth()] + ", " + service_3_date_5.getFullYear();
+                
+                var service_3_date_6 = new Date(service_3_date_1.getFullYear(), service_3_date_1.getMonth() + 5, 1)
+                document.getElementById("service_3_date_6").innerHTML = months[service_3_date_6.getMonth()] + ", " + service_3_date_6.getFullYear();
+
+            });
+
+            
+            if($('#service_3_amortization_type').val() == 'Constant'){
+                $('.div_end_date_service_3').show();
+                $('.div_table_service_3').hide();
+                $('.hours_per_week_service_3').hide();
+            }
+            else if ($('#service_3_amortization_type').val() == 'Custom'){
+                $('.div_table_service_3').show();
+                $('.div_end_date_service_3').hide();
+                $('.hours_per_week_service_3').hide();
+            }
+            else{
+                $('.hours_per_week_service_3').show();
+                $('.div_table_service_3').hide();
+                $('.div_end_date_service_3').hide();
+            }
+
+            $('#service_3_amortization_type').on('selectmenuchange', function() {
+                if($('#service_3_amortization_type').val() == 'Constant'){
+                    $('.div_end_date_service_3').show();
+                    $('.div_table_service_3').hide();
+                    $('.hours_per_week_service_3').hide();
+                }
+                else if ($('#service_3_amortization_type').val() == 'Custom'){
+                    $('.div_table_service_3').show();
+                    $('.div_end_date_service_3').hide();
+                    $('.hours_per_week_service_3').hide();
+                }
+                else{
+                    $('.hours_per_week_service_3').show();
+                    $('.div_table_service_3').hide();
+                    $('.div_end_date_service_3').hide();
+                }
+            });
+
+            if($('#service_3_refund_flag').val() == ':checked'){
+                $('.service_3_refund').show();
+            }
+            else{
+                $('.service_3_refund').hide();
+            }
+            $('#service_3_refund_flag').click(function() {
+                if($('#service_3_refund_flag').is(':checked')) {
+                    $('.service_3_refund').show();
+                }
+                else{
+                    $('.service_3_refund').hide();
+                }
+            });
+
+            if($('#service_3_refund_status').val() == 'Partial' || $('#service_3_refund_status').val() == 'Full'){
+                $('.div_credit_note_service_3').show();
+            }
+            else{
+                $('.div_credit_note_service_3').hide();
+            }
+            
+            $('#service_3_refund_status').on('selectmenuchange', function() {
+                if($('#service_3_refund_status').val() == 'Partial' || $('#service_3_refund_status').val() == 'Full'){
+                    $('.div_credit_note_service_3').show();
+                }
+                else{
+                    $('.div_credit_note_service_3').hide();
+                }
+            });
+
+            function fillOtherValues_4(val) {
+                var index = $.inArray( val, service_array );
+                $('input#service_4_price').val(price_array[index]);
+            }
+
+            $('#service_4_name').change(calculate_4);
+            $('#service_4_price').change(calculate_4);
+            $('#service_4_count').change(calculate_4);
+            $('#service_4_discount_value').change(calculate_4);
+            $('#overall_discount').change(calculate_4);
+            
+
+            function calculate_4(e)
+            {
+                var value_after_discount = 0.0;
+                var initial_value = $('#service_4_price').val() * 1 * $('#service_4_count').val() * 1;
+                var discount_value = 0.0;
+                
+                if ($('#service_4_discount_value').val() >= 1){
+                    discount_value = $('#service_4_discount_value').val() * 1;
+                    
+                    if($('#overall_discount').val() * 1 >= 1){
+                        discount_value = discount_value + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = discount_value + ($('#overall_discount').val() * 1) * initial_value;
+                    }
+                }
+                else{
+                    if($('#overall_discount').val() >= 1){
+                        discount_value = initial_value * ($('#service_4_discount_value').val() * 1) + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = initial_value * ($('#service_4_discount_value').val() * 1 + $('#overall_discount').val() * 1);
+                    }
+                }
+
+                discount_value = discount_value.toFixed();
+                value_after_discount = initial_value - discount_value;
+                
+                if(value_after_discount < 0)
+                {
+                    value_after_discount = 0;
+                }
+                
+                $('#service_4_final_price').val(value_after_discount);
+            }
+
+            var service_4_date_1 = new Date($('#service_4_start_date').val());
+            document.getElementById("service_4_date_1").innerHTML = months[service_4_date_1.getMonth()] + ", " + service_4_date_1.getFullYear();
+
+            var service_4_date_2 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 1, 1)
+            document.getElementById("service_4_date_2").innerHTML = months[service_4_date_2.getMonth()] + ", " + service_4_date_2.getFullYear();
+
+            var service_4_date_3 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 2, 1)
+            document.getElementById("service_4_date_3").innerHTML = months[service_4_date_3.getMonth()] + ", " + service_4_date_3.getFullYear();
+
+            var service_4_date_4 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 3, 1)
+            document.getElementById("service_4_date_4").innerHTML = months[service_4_date_4.getMonth()] + ", " + service_4_date_4.getFullYear();
+
+            var service_4_date_5 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 4, 1)
+            document.getElementById("service_4_date_5").innerHTML = months[service_4_date_5.getMonth()] + ", " + service_4_date_5.getFullYear();
+            
+            var service_4_date_6 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 5, 1)
+            document.getElementById("service_4_date_6").innerHTML = months[service_4_date_6.getMonth()] + ", " + service_4_date_6.getFullYear();
+            
+
+            $('#service_4_start_date').change(function() {
+                var service_4_date_1 = new Date($('#service_4_start_date').val());
+                document.getElementById("service_4_date_1").innerHTML = months[service_4_date_1.getMonth()] + ", " + service_4_date_1.getFullYear();
+
+                var service_4_date_2 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 1, 1)
+                document.getElementById("service_4_date_2").innerHTML = months[service_4_date_2.getMonth()] + ", " + service_4_date_2.getFullYear();
+
+                var service_4_date_3 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 2, 1)
+                document.getElementById("service_4_date_3").innerHTML = months[service_4_date_3.getMonth()] + ", " + service_4_date_3.getFullYear();
+
+                var service_4_date_4 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 3, 1)
+                document.getElementById("service_4_date_4").innerHTML = months[service_4_date_4.getMonth()] + ", " + service_4_date_4.getFullYear();
+
+                var service_4_date_5 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 4, 1)
+                document.getElementById("service_4_date_5").innerHTML = months[service_4_date_5.getMonth()] + ", " + service_4_date_5.getFullYear();
+                
+                var service_4_date_6 = new Date(service_4_date_1.getFullYear(), service_4_date_1.getMonth() + 5, 1)
+                document.getElementById("service_4_date_6").innerHTML = months[service_4_date_6.getMonth()] + ", " + service_4_date_6.getFullYear();
+
+            });
+
+            
+            if($('#service_4_amortization_type').val() == 'Constant'){
+                $('.div_end_date_service_4').show();
+                $('.div_table_service_4').hide();
+                $('.hours_per_week_service_4').hide();
+            }
+            else if ($('#service_4_amortization_type').val() == 'Custom'){
+                $('.div_table_service_4').show();
+                $('.div_end_date_service_4').hide();
+                $('.hours_per_week_service_4').hide();
+            }
+            else{
+                $('.hours_per_week_service_4').show();
+                $('.div_table_service_4').hide();
+                $('.div_end_date_service_4').hide();
+            }
+
+            $('#service_4_amortization_type').on('selectmenuchange', function() {
+                if($('#service_4_amortization_type').val() == 'Constant'){
+                    $('.div_end_date_service_4').show();
+                    $('.div_table_service_4').hide();
+                    $('.hours_per_week_service_4').hide();
+                }
+                else if ($('#service_4_amortization_type').val() == 'Custom'){
+                    $('.div_table_service_4').show();
+                    $('.div_end_date_service_4').hide();
+                    $('.hours_per_week_service_4').hide();
+                }
+                else{
+                    $('.hours_per_week_service_4').show();
+                    $('.div_table_service_4').hide();
+                    $('.div_end_date_service_4').hide();
+                }
+            });
+
+            if($('#service_4_refund_flag').val() == ':checked'){
+                $('.service_4_refund').show();
+            }
+            else{
+                $('.service_4_refund').hide();
+            }
+            $('#service_4_refund_flag').click(function() {
+                if($('#service_4_refund_flag').is(':checked')) {
+                    $('.service_4_refund').show();
+                }
+                else{
+                    $('.service_4_refund').hide();
+                }
+            });
+
+            if($('#service_4_refund_status').val() == 'Partial' || $('#service_4_refund_status').val() == 'Full'){
+                $('.div_credit_note_service_4').show();
+            }
+            else{
+                $('.div_credit_note_service_4').hide();
+            }
+            
+            $('#service_4_refund_status').on('selectmenuchange', function() {
+                if($('#service_4_refund_status').val() == 'Partial' || $('#service_4_refund_status').val() == 'Full'){
+                    $('.div_credit_note_service_4').show();
+                }
+                else{
+                    $('.div_credit_note_service_4').hide();
+                }
+            });
+
+            function fillOtherValues_5(val) {
+                var index = $.inArray( val, service_array );
+                $('input#service_5_price').val(price_array[index]);
+            }
+
+            $('#service_5_name').change(calculate_5);
+            $('#service_5_price').change(calculate_5);
+            $('#service_5_count').change(calculate_5);
+            $('#service_5_discount_value').change(calculate_5);
+            $('#overall_discount').change(calculate_5);
+            
+
+            function calculate_5(e)
+            {
+                var value_after_discount = 0.0;
+                var initial_value = $('#service_5_price').val() * 1 * $('#service_5_count').val() * 1;
+                var discount_value = 0.0;
+                
+                if ($('#service_5_discount_value').val() >= 1){
+                    discount_value = $('#service_5_discount_value').val() * 1;
+                    
+                    if($('#overall_discount').val() * 1 >= 1){
+                        discount_value = discount_value + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = discount_value + ($('#overall_discount').val() * 1) * initial_value;
+                    }
+                }
+                else{
+                    if($('#overall_discount').val() >= 1){
+                        discount_value = initial_value * ($('#service_5_discount_value').val() * 1) + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = initial_value * ($('#service_5_discount_value').val() * 1 + $('#overall_discount').val() * 1);
+                    }
+                }
+
+                discount_value = discount_value.toFixed();
+                value_after_discount = initial_value - discount_value;
+                
+                if(value_after_discount < 0)
+                {
+                    value_after_discount = 0;
+                }
+                
+                $('#service_5_final_price').val(value_after_discount);
+            }
+
+            var service_5_date_1 = new Date($('#service_5_start_date').val());
+            document.getElementById("service_5_date_1").innerHTML = months[service_5_date_1.getMonth()] + ", " + service_5_date_1.getFullYear();
+
+            var service_5_date_2 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 1, 1)
+            document.getElementById("service_5_date_2").innerHTML = months[service_5_date_2.getMonth()] + ", " + service_5_date_2.getFullYear();
+
+            var service_5_date_3 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 2, 1)
+            document.getElementById("service_5_date_3").innerHTML = months[service_5_date_3.getMonth()] + ", " + service_5_date_3.getFullYear();
+
+            var service_5_date_4 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 3, 1)
+            document.getElementById("service_5_date_4").innerHTML = months[service_5_date_4.getMonth()] + ", " + service_5_date_4.getFullYear();
+
+            var service_5_date_5 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 4, 1)
+            document.getElementById("service_5_date_5").innerHTML = months[service_5_date_5.getMonth()] + ", " + service_5_date_5.getFullYear();
+            
+            var service_5_date_6 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 5, 1)
+            document.getElementById("service_5_date_6").innerHTML = months[service_5_date_6.getMonth()] + ", " + service_5_date_6.getFullYear();
+            
+
+            $('#service_5_start_date').change(function() {
+                var service_5_date_1 = new Date($('#service_5_start_date').val());
+                document.getElementById("service_5_date_1").innerHTML = months[service_5_date_1.getMonth()] + ", " + service_5_date_1.getFullYear();
+
+                var service_5_date_2 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 1, 1)
+                document.getElementById("service_5_date_2").innerHTML = months[service_5_date_2.getMonth()] + ", " + service_5_date_2.getFullYear();
+
+                var service_5_date_3 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 2, 1)
+                document.getElementById("service_5_date_3").innerHTML = months[service_5_date_3.getMonth()] + ", " + service_5_date_3.getFullYear();
+
+                var service_5_date_4 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 3, 1)
+                document.getElementById("service_5_date_4").innerHTML = months[service_5_date_4.getMonth()] + ", " + service_5_date_4.getFullYear();
+
+                var service_5_date_5 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 4, 1)
+                document.getElementById("service_5_date_5").innerHTML = months[service_5_date_5.getMonth()] + ", " + service_5_date_5.getFullYear();
+                
+                var service_5_date_6 = new Date(service_5_date_1.getFullYear(), service_5_date_1.getMonth() + 5, 1)
+                document.getElementById("service_5_date_6").innerHTML = months[service_5_date_6.getMonth()] + ", " + service_5_date_6.getFullYear();
+
+            });
+
+            
+            if($('#service_5_amortization_type').val() == 'Constant'){
+                $('.div_end_date_service_5').show();
+                $('.div_table_service_5').hide();
+                $('.hours_per_week_service_5').hide();
+            }
+            else if ($('#service_5_amortization_type').val() == 'Custom'){
+                $('.div_table_service_5').show();
+                $('.div_end_date_service_5').hide();
+                $('.hours_per_week_service_5').hide();
+            }
+            else{
+                $('.hours_per_week_service_5').show();
+                $('.div_table_service_5').hide();
+                $('.div_end_date_service_5').hide();
+            }
+
+            $('#service_5_amortization_type').on('selectmenuchange', function() {
+                if($('#service_5_amortization_type').val() == 'Constant'){
+                    $('.div_end_date_service_5').show();
+                    $('.div_table_service_5').hide();
+                    $('.hours_per_week_service_5').hide();
+                }
+                else if ($('#service_5_amortization_type').val() == 'Custom'){
+                    $('.div_table_service_5').show();
+                    $('.div_end_date_service_5').hide();
+                    $('.hours_per_week_service_5').hide();
+                }
+                else{
+                    $('.hours_per_week_service_5').show();
+                    $('.div_table_service_5').hide();
+                    $('.div_end_date_service_5').hide();
+                }
+            });
+
+            if($('#service_5_refund_flag').val() == ':checked'){
+                $('.service_5_refund').show();
+            }
+            else{
+                $('.service_5_refund').hide();
+            }
+            $('#service_5_refund_flag').click(function() {
+                if($('#service_5_refund_flag').is(':checked')) {
+                    $('.service_5_refund').show();
+                }
+                else{
+                    $('.service_5_refund').hide();
+                }
+            });
+
+            if($('#service_5_refund_status').val() == 'Partial' || $('#service_5_refund_status').val() == 'Full'){
+                $('.div_credit_note_service_5').show();
+            }
+            else{
+                $('.div_credit_note_service_5').hide();
+            }
+            
+            $('#service_5_refund_status').on('selectmenuchange', function() {
+                if($('#service_5_refund_status').val() == 'Partial' || $('#service_5_refund_status').val() == 'Full'){
+                    $('.div_credit_note_service_5').show();
+                }
+                else{
+                    $('.div_credit_note_service_5').hide();
+                }
+            });
+
+            function fillOtherValues_6(val) {
+                var index = $.inArray( val, service_array );
+                $('input#service_6_price').val(price_array[index]);
+            }
+
+            $('#service_6_name').change(calculate_6);
+            $('#service_6_price').change(calculate_6);
+            $('#service_6_count').change(calculate_6);
+            $('#service_6_discount_value').change(calculate_6);
+            $('#overall_discount').change(calculate_6);
+            
+
+            function calculate_6(e)
+            {
+                var value_after_discount = 0.0;
+                var initial_value = $('#service_6_price').val() * 1 * $('#service_6_count').val() * 1;
+                var discount_value = 0.0;
+                
+                if ($('#service_6_discount_value').val() >= 1){
+                    discount_value = $('#service_6_discount_value').val() * 1;
+                    
+                    if($('#overall_discount').val() * 1 >= 1){
+                        discount_value = discount_value + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = discount_value + ($('#overall_discount').val() * 1) * initial_value;
+                    }
+                }
+                else{
+                    if($('#overall_discount').val() >= 1){
+                        discount_value = initial_value * ($('#service_6_discount_value').val() * 1) + $('#overall_discount').val() * 1;
+                    }
+                    else{
+                        discount_value = initial_value * ($('#service_6_discount_value').val() * 1 + $('#overall_discount').val() * 1);
+                    }
+                }
+
+                discount_value = discount_value.toFixed();
+                value_after_discount = initial_value - discount_value;
+                
+                if(value_after_discount < 0)
+                {
+                    value_after_discount = 0;
+                }
+                
+                $('#service_6_final_price').val(value_after_discount);
+            }
+
+            var service_6_date_1 = new Date($('#service_6_start_date').val());
+            document.getElementById("service_6_date_1").innerHTML = months[service_6_date_1.getMonth()] + ", " + service_6_date_1.getFullYear();
+
+            var service_6_date_2 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 1, 1)
+            document.getElementById("service_6_date_2").innerHTML = months[service_6_date_2.getMonth()] + ", " + service_6_date_2.getFullYear();
+
+            var service_6_date_3 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 2, 1)
+            document.getElementById("service_6_date_3").innerHTML = months[service_6_date_3.getMonth()] + ", " + service_6_date_3.getFullYear();
+
+            var service_6_date_4 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 3, 1)
+            document.getElementById("service_6_date_4").innerHTML = months[service_6_date_4.getMonth()] + ", " + service_6_date_4.getFullYear();
+
+            var service_6_date_5 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 4, 1)
+            document.getElementById("service_6_date_5").innerHTML = months[service_6_date_5.getMonth()] + ", " + service_6_date_5.getFullYear();
+            
+            var service_6_date_6 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 5, 1)
+            document.getElementById("service_6_date_6").innerHTML = months[service_6_date_6.getMonth()] + ", " + service_6_date_6.getFullYear();
+            
+
+            $('#service_6_start_date').change(function() {
+                var service_6_date_1 = new Date($('#service_6_start_date').val());
+                document.getElementById("service_6_date_1").innerHTML = months[service_6_date_1.getMonth()] + ", " + service_6_date_1.getFullYear();
+
+                var service_6_date_2 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 1, 1)
+                document.getElementById("service_6_date_2").innerHTML = months[service_6_date_2.getMonth()] + ", " + service_6_date_2.getFullYear();
+
+                var service_6_date_3 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 2, 1)
+                document.getElementById("service_6_date_3").innerHTML = months[service_6_date_3.getMonth()] + ", " + service_6_date_3.getFullYear();
+
+                var service_6_date_4 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 3, 1)
+                document.getElementById("service_6_date_4").innerHTML = months[service_6_date_4.getMonth()] + ", " + service_6_date_4.getFullYear();
+
+                var service_6_date_5 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 4, 1)
+                document.getElementById("service_6_date_5").innerHTML = months[service_6_date_5.getMonth()] + ", " + service_6_date_5.getFullYear();
+                
+                var service_6_date_6 = new Date(service_6_date_1.getFullYear(), service_6_date_1.getMonth() + 5, 1)
+                document.getElementById("service_6_date_6").innerHTML = months[service_6_date_6.getMonth()] + ", " + service_6_date_6.getFullYear();
+
+            });
+
+            
+            if($('#service_6_amortization_type').val() == 'Constant'){
+                $('.div_end_date_service_6').show();
+                $('.div_table_service_6').hide();
+                $('.hours_per_week_service_6').hide();
+            }
+            else if ($('#service_6_amortization_type').val() == 'Custom'){
+                $('.div_table_service_6').show();
+                $('.div_end_date_service_6').hide();
+                $('.hours_per_week_service_6').hide();
+            }
+            else{
+                $('.hours_per_week_service_6').show();
+                $('.div_table_service_6').hide();
+                $('.div_end_date_service_6').hide();
+            }
+            
+            $('#service_6_amortization_type').on('selectmenuchange', function() {
+                if($('#service_6_amortization_type').val() == 'Constant'){
+                    $('.div_end_date_service_6').show();
+                    $('.div_table_service_6').hide();
+                    $('.hours_per_week_service_6').hide();
+                }
+                else if ($('#service_6_amortization_type').val() == 'Custom'){
+                    $('.div_table_service_6').show();
+                    $('.div_end_date_service_6').hide();
+                    $('.hours_per_week_service_6').hide();
+                }
+                else{
+                    $('.hours_per_week_service_6').show();
+                    $('.div_table_service_6').hide();
+                    $('.div_end_date_service_6').hide();
+                }
+            });
+
+            if($('#service_6_refund_flag').val() == ':checked'){
+                $('.service_6_refund').show();
+            }
+            else{
+                $('.service_6_refund').hide();
+            }
+            $('#service_6_refund_flag').click(function() {
+                if($('#service_6_refund_flag').is(':checked')) {
+                    $('.service_6_refund').show();
+                }
+                else{
+                    $('.service_6_refund').hide();
+                }
+            });
+
+            if($('#service_6_refund_status').val() == 'Partial' || $('#service_6_refund_status').val() == 'Full'){
+                $('.div_credit_note_service_6').show();
+            }
+            else{
+                $('.div_credit_note_service_6').hide();
+            }
+            
+            $('#service_6_refund_status').on('selectmenuchange', function() {
+                if($('#service_6_refund_status').val() == 'Partial' || $('#service_6_refund_status').val() == 'Full'){
+                    $('.div_credit_note_service_6').show();
+                }
+                else{
+                    $('.div_credit_note_service_6').hide();
+                }
+            });
+
+
+            // Teacher's names
+            $(function() {
+                $('#service_1_teacher_name').autocomplete({
+                    source: teacher_array,
+                });
+            });
+
+            $(function() {
+                $('#service_2_teacher_name').autocomplete({
+                    source: teacher_array,
+                });
+            });
+
+            $(function() {
+                $('#service_3_teacher_name').autocomplete({
+                    source: teacher_array,
+                });
+            });
+
+            $(function() {
+                $('#service_4_teacher_name').autocomplete({
+                    source: teacher_array,
+                });
+            });
+
+            $(function() {
+                $('#service_5_teacher_name').autocomplete({
+                    source: teacher_array,
+                });
+            });
+
+            $(function() {
+                $('#service_6_teacher_name').autocomplete({
+                    source: teacher_array,
+                });
+            });
+
+            // Change to the total value
+            $(document).on("change", "input", function() {
+            var sum = 0;
+            $(".finalprice").each(function(){
+                sum += +$(this).val();
+            });
+
+            $("#total_value").val(sum);
+            });
+            
+            //Refund Part
+            $('.refund').hide();
+            $('#refund_flag').click(function() {
+                if($('#refund_flag').is(':checked')) {
+                    $('.refund').show();
+                }
+                else{
+                    $('.refund').hide();
+                }
+            });
+
+            $('.refund').hide();
+            $('#refund_flag').click(function() {
+                if($('#refund_flag').is(':checked')) {
+                    $('.refund').show();
+                }
+                else{
+                    $('.refund').hide();
+                }
+            });
+
+            if($('#use_credit_flag').val() == ':checked'){
+                $('.div_credit_spending').show();
+            }
+            else{
+                $('.div_credit_spending').hide();
+            }
+            $('#use_credit_flag').click(function() {
+                if($('#use_credit_flag').is(':checked')) {
+                    $('.div_credit_spending').show();
+                }
+                else{
+                    $('.div_credit_spending').hide();
+                }
+            });
+
+            
+        });
+
+        </script>
+    {% endblock %}
+
+    <h1>  {{action}} {{title}} </h1>
+    <section>
+        <form class="form-inline" method="POST">
+            {{ form.hidden_tag() }}
+            
+            <p>
+                {{ form.student_full_name.label }}<br>
+                {{ form.student_full_name(size=64) }}<br>
+                {% for error in form.student_full_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            {{ form.use_company_info_flag.label }} 
+            {{ form.use_company_info_flag(class="selector") }} <br>
+
+            <div class="company_info">
+                <h3>Company Information</h3>
+                {{ form.client_company_name.label }}<br>
+                {{ form.client_company_name(size=64, class = "company_name") }}<br>
+
+                {{ form.client_address.label }}<br>
+                {{ form.client_address(size=64, class = "company_name") }}<br>
+
+                {{ form.client_tax_id.label }}<br>
+                {{ form.client_tax_id(size=64, class = "company_name") }}<br>
+            </div>
+
+            <h3>Service Part</h3>
+            <div id="accordion">
+            <h3>Service 1</h3>
+            <div>
+                <div class="row">
+                    <div class="column left">
+                        <p>
+                            {{ form.service_1_name.label }}<br>
+                            {{ form.service_1_name(size=64, class = "name") }}<br>
+                            {% for error in form.service_1_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        
+                        <p>
+                            {{ form.service_1_price.label }}<br>
+                            {{ form.service_1_price(size=32) }}<br>
+                            {% for error in form.service_1_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_1_discount_value.label }}<br>
+                            {{ form.service_1_discount_value(size=32) }}
+                            {% for error in form.service_1_discount_value.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_1_count.label }}<br>
+                            {{ form.service_1_count(size=32) }}
+                            {% for error in form.service_1_count.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_1_final_price.label }}<br>
+                            {{ form.service_1_final_price(size=32, class = "finalprice")}}
+                            {% for error in form.service_1_final_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        
+                        <p>
+                            {{ form.service_1_note.label }}<br>
+                            {{ form.service_1_note(size=65) }}
+                            {% for error in form.service_1_note.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_1_teacher_name.label }}<br>
+                            {{ form.service_1_teacher_name(size = 70) }}
+                            {% for error in form.service_1_teacher_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_1_office.label }}<br>
+                            {{ form.service_1_office() }}
+                            {% for error in form.service_1_office.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_1_refund_flag.label }} <br>
+                            {{ form.service_1_refund_flag(class="selector") }}
+                            {% for error in form.service_1_refund_flag.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+
+                        <div class="service_1_refund">
+                            <p>
+                                {{ form.service_1_refund_status.label }} <br>
+                                {{ form.service_1_refund_status() }}
+                                {% for error in form.service_1_refund_status.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_credit_note_service_1">
+                                <p>
+                                    {{ form.service_1_credit_note_number.label }} <br>
+                                    {{ form.service_1_credit_note_number() }}
+                                    {% for error in form.service_1_credit_note_number.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>                            
+
+                            <p>
+                                {{ form.service_1_refund_amount.label }} <br>
+                                {{ form.service_1_refund_amount() }}
+                                {% for error in form.service_1_refund_amount.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <p>
+                                {{ form.service_1_refund_date.label }} <br>
+                                {{ form.service_1_refund_date() }}
+                                {% for error in form.service_1_refund_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="column right">
+                        <p>
+                            {{ form.service_1_amortization_type.label() }}<br>
+                            {{ form.service_1_amortization_type() }}
+                            {% for error in form.service_1_amortization_type.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <div class="div_dates_service_1">
+                            <p>
+                                {{ form.service_1_start_date.label(class = "service_1_dates") }}<br>
+                                {{ form.service_1_start_date(size=80, class = "service_1_dates") }}
+                                {% for error in form.service_1_start_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_end_date_service_1">
+                                <p>
+                                    {{ form.service_1_end_date.label(class = "service_1_dates") }}<br>
+                                    {{ form.service_1_end_date(size=80, class = "service_1_dates") }}
+                                    {% for error in form.service_1_end_date.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hours_per_week_service_1">
+                            <p>
+                                {{ form.service_1_total_hours.label(class = "service_1_hrs_per_week") }} <br>
+                                {{ form.service_1_total_hours(size=5, class = "service_1_hrs_per_week") }} <br> <br>
+                                {% for error in form.service_1_total_hours.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>No. of Hours</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Monday </td>
+                                            <td>{{ form.service_1_monday_hours(size=5, class = "service_1_hrs_per_week") }}
+                                                {% for error in form.service_1_monday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tuesday</td>
+                                            <td>{{ form.service_1_tuesday_hours(size=5, class = "service_1_hrs_per_week") }}
+                                                {% for error in form.service_1_tuesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wednesday</td>
+                                            <td>{{ form.service_1_wednesday_hours(size=5, class = "service_1_hrs_per_week") }}
+                                                {% for error in form.service_1_wednesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thursday</td>
+                                            <td>{{ form.service_1_thursday_hours(size=5, class = "service_1_hrs_per_week") }}
+                                                {% for error in form.service_1_thursday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Friday</td>
+                                            <td>{{ form.service_1_friday_hours(size=5, class = "service_1_hrs_per_week") }}
+                                                {% for error in form.service_1_friday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Saturday</td>
+                                            <td>{{ form.service_1_saturday_hours(size=5, class = "service_1_hrs_per_week") }}
+                                                {% for error in form.service_1_saturday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sunday</td>
+                                            <td>{{ form.service_1_sunday_hours(size=5, class = "service_1_hrs_per_week") }}
+                                                {% for error in form.service_1_sunday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+
+                        <div class="div_table_service_1">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>No. of Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><p id="service_1_date_1"> </p> </td>
+                                        <td>{{ form.service_1_month_1_hrs(size=5, class = "service_1_dates") }}
+                                            {% for error in form.service_1_month_1_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_1_date_2"></p></td>
+                                        <td>{{ form.service_1_month_2_hrs(size=5, class = "service_1_dates") }}
+                                            {% for error in form.service_1_month_2_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_1_date_3"></p></td>
+                                        <td>{{ form.service_1_month_3_hrs(size=5, class = "service_1_dates") }}
+                                            {% for error in form.service_1_month_3_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_1_date_4"></p></td>
+                                        <td>{{ form.service_1_month_4_hrs(size=5, class = "service_1_dates") }}
+                                            {% for error in form.service_1_month_4_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_1_date_5"></p></td>
+                                        <td>{{ form.service_1_month_5_hrs(size=5, class = "service_1_dates") }}
+                                            {% for error in form.service_1_month_5_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_1_date_6"></p></td>
+                                        <td>{{ form.service_1_month_6_hrs(size=5, class = "service_1_dates") }}
+                                            {% for error in form.service_1_month_6_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <h3>Service 2</h3>
+            <div>
+                <div class="row"> 
+                    <div class="column left">
+                        <p>
+                            {{ form.service_2_name.label }}<br>
+                            {{ form.service_2_name(size=64, class = "name") }}<br>
+                            {% for error in form.service_2_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        
+                        
+                        <p>
+                            {{ form.service_2_price.label }}<br>
+                            {{ form.service_2_price(size=32) }}<br>
+                            {% for error in form.service_2_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.service_2_discount_value.label }}<br>
+                            {{ form.service_2_discount_value(size=32) }}<br>
+                            {% for error in form.service_2_discount_value.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_2_count.label }}<br>
+                            {{ form.service_2_count(size=32) }}
+                            {% for error in form.service_2_count.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_2_final_price.label }}<br>
+                            {{ form.service_2_final_price(size=32, class = "finalprice") }}
+                            {% for error in form.service_2_final_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_2_note.label }}<br>
+                            {{ form.service_2_note(size=65) }}
+                            {% for error in form.service_2_note.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_2_teacher_name.label }}<br>
+                            {{ form.service_2_teacher_name(size = 70) }}
+                            {% for error in form.service_2_teacher_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_2_office.label }}<br>
+                            {{ form.service_2_office() }}
+                            {% for error in form.service_2_office.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_2_refund_flag.label }} <br>
+                            {{ form.service_2_refund_flag(class="selector") }}
+                            {% for error in form.service_2_refund_flag.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+
+                        <div class="service_2_refund">
+                            <p>
+                                {{ form.service_2_refund_status.label }} <br>
+                                {{ form.service_2_refund_status() }}
+                                {% for error in form.service_2_refund_status.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_credit_note_service_2">
+                                <p>
+                                    {{ form.service_2_credit_note_number.label }} <br>
+                                    {{ form.service_2_credit_note_number() }}
+                                    {% for error in form.service_2_credit_note_number.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+
+                            <p>
+                                {{ form.service_2_refund_amount.label }} <br>
+                                {{ form.service_2_refund_amount() }}
+                                {% for error in form.service_2_refund_amount.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <p>
+                                {{ form.service_2_refund_date.label }} <br>
+                                {{ form.service_2_refund_date() }}
+                                {% for error in form.service_2_refund_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                        </div>
+                    </div>
+                    
+                    <div class="column right">
+                        <p>
+                            {{ form.service_2_amortization_type.label() }}<br>
+                            {{ form.service_2_amortization_type() }}
+                            {% for error in form.service_2_amortization_type.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <div class="div_dates_service_2">
+                            <p>
+                                {{ form.service_2_start_date.label(class = "service_2_dates") }}<br>
+                                {{ form.service_2_start_date(size=80, class = "service_2_dates") }}
+                                {% for error in form.service_2_start_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_end_date_service_2">
+                                <p>
+                                    {{ form.service_2_end_date.label(class = "service_2_dates") }}<br>
+                                    {{ form.service_2_end_date(size=80, class = "service_2_dates") }}
+                                    {% for error in form.service_2_end_date.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hours_per_week_service_2">
+                            <p>
+                                {{ form.service_2_total_hours.label(class = "service_2_hrs_per_week") }} <br>
+                                {{ form.service_2_total_hours(size=5, class = "service_2_hrs_per_week") }} <br> <br>
+                                {% for error in form.service_2_total_hours.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>No. of Hours</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Monday </td>
+                                            <td>{{ form.service_2_monday_hours(size=5, class = "service_2_hrs_per_week") }}
+                                                {% for error in form.service_2_monday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tuesday</td>
+                                            <td>{{ form.service_2_tuesday_hours(size=5, class = "service_2_hrs_per_week") }}
+                                                {% for error in form.service_2_tuesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wednesday</td>
+                                            <td>{{ form.service_2_wednesday_hours(size=5, class = "service_2_hrs_per_week") }}
+                                                {% for error in form.service_2_wednesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thursday</td>
+                                            <td>{{ form.service_2_thursday_hours(size=5, class = "service_2_hrs_per_week") }}
+                                                {% for error in form.service_2_thursday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Friday</td>
+                                            <td>{{ form.service_2_friday_hours(size=5, class = "service_2_hrs_per_week") }}
+                                                {% for error in form.service_2_friday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Saturday</td>
+                                            <td>{{ form.service_2_saturday_hours(size=5, class = "service_2_hrs_per_week") }}
+                                                {% for error in form.service_2_saturday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sunday</td>
+                                            <td>{{ form.service_2_sunday_hours(size=5, class = "service_2_hrs_per_week") }}
+                                                {% for error in form.service_2_sunday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+
+                        <div class="div_table_service_2">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>No. of Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><p id="service_2_date_1"> </p> </td>
+                                        <td>{{ form.service_2_month_1_hrs(size=5, class = "service_2_dates") }}
+                                            {% for error in form.service_2_month_1_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_2_date_2"></p></td>
+                                        <td>{{ form.service_2_month_2_hrs(size=5, class = "service_2_dates") }}
+                                            {% for error in form.service_2_month_2_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_2_date_3"></p></td>
+                                        <td>{{ form.service_2_month_3_hrs(size=5, class = "service_2_dates") }}
+                                            {% for error in form.service_2_month_3_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_2_date_4"></p></td>
+                                        <td>{{ form.service_2_month_4_hrs(size=5, class = "service_2_dates") }}
+                                            {% for error in form.service_2_month_4_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_2_date_5"></p></td>
+                                        <td>{{ form.service_2_month_5_hrs(size=5, class = "service_2_dates") }}
+                                            {% for error in form.service_2_month_5_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_2_date_6"></p></td>
+                                        <td>{{ form.service_2_month_6_hrs(size=5, class = "service_2_dates") }}
+                                            {% for error in form.service_2_month_6_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Service 3</h3>
+            <div>
+                <div class="row">
+                    <div class="column left">
+                        <p>
+                            {{ form.service_3_name.label }}<br>
+                            {{ form.service_3_name(size=64, class = "name") }}<br>
+                            {% for error in form.service_3_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.service_3_price.label }}<br>
+                            {{ form.service_3_price(size=32) }}<br>
+                            {% for error in form.service_3_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.service_3_discount_value.label }}<br>
+                            {{ form.service_3_discount_value(size=32) }}<br>
+                            {% for error in form.service_3_discount_value.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        
+                        <p>
+                            {{ form.service_3_count.label }}<br>
+                            {{ form.service_3_count(size=32) }}
+                            {% for error in form.service_3_count.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_3_final_price.label }}<br>
+                            {{ form.service_3_final_price(size=32, class = "finalprice") }}
+                            {% for error in form.service_3_final_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_3_note.label }}<br>
+                            {{ form.service_3_note(size=65) }}
+                            {% for error in form.service_3_note.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_3_teacher_name.label }}<br>
+                            {{ form.service_3_teacher_name(size = 70) }}
+                            {% for error in form.service_3_teacher_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_3_office.label }}<br>
+                            {{ form.service_3_office() }}
+                            {% for error in form.service_3_office.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_3_refund_flag.label }} <br>
+                            {{ form.service_3_refund_flag(class="selector") }}
+                            {% for error in form.service_3_refund_flag.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+
+                        <div class="service_3_refund">
+                            <p>
+                                {{ form.service_3_refund_status.label }} <br>
+                                {{ form.service_3_refund_status() }}
+                                {% for error in form.service_3_refund_status.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_credit_note_service_3">
+                                <p>
+                                    {{ form.service_3_credit_note_number.label }} <br>
+                                    {{ form.service_3_credit_note_number() }}
+                                    {% for error in form.service_3_credit_note_number.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+
+                            <p>
+                                {{ form.service_3_refund_amount.label }} <br>
+                                {{ form.service_3_refund_amount() }}
+                                {% for error in form.service_3_refund_amount.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <p>
+                                {{ form.service_3_refund_date.label }} <br>
+                                {{ form.service_3_refund_date() }}
+                                {% for error in form.service_3_refund_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="column right">
+                        <p>
+                            {{ form.service_3_amortization_type.label() }}<br>
+                            {{ form.service_3_amortization_type() }}
+                            {% for error in form.service_3_amortization_type.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <div class="div_dates_service_3">
+                            <p>
+                                {{ form.service_3_start_date.label(class = "service_3_dates") }}<br>
+                                {{ form.service_3_start_date(size=80, class = "service_3_dates") }}
+                                {% for error in form.service_3_start_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_end_date_service_3">
+                                <p>
+                                    {{ form.service_3_end_date.label(class = "service_3_dates") }}<br>
+                                    {{ form.service_3_end_date(size=80, class = "service_3_dates") }}
+                                    {% for error in form.service_3_end_date.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hours_per_week_service_3">
+                            <p>
+                                {{ form.service_3_total_hours.label(class = "service_3_hrs_per_week") }} <br>
+                                {{ form.service_3_total_hours(size=5, class = "service_3_hrs_per_week") }} <br> <br>
+                                {% for error in form.service_3_total_hours.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>No. of Hours</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Monday </td>
+                                            <td>{{ form.service_3_monday_hours(size=5, class = "service_3_hrs_per_week") }}
+                                                {% for error in form.service_3_monday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tuesday</td>
+                                            <td>{{ form.service_3_tuesday_hours(size=5, class = "service_3_hrs_per_week") }}
+                                                {% for error in form.service_3_tuesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wednesday</td>
+                                            <td>{{ form.service_3_wednesday_hours(size=5, class = "service_3_hrs_per_week") }}
+                                                {% for error in form.service_3_wednesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thursday</td>
+                                            <td>{{ form.service_3_thursday_hours(size=5, class = "service_3_hrs_per_week") }}
+                                                {% for error in form.service_3_thursday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Friday</td>
+                                            <td>{{ form.service_3_friday_hours(size=5, class = "service_3_hrs_per_week") }}
+                                                {% for error in form.service_3_friday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Saturday</td>
+                                            <td>{{ form.service_3_saturday_hours(size=5, class = "service_3_hrs_per_week") }}
+                                                {% for error in form.service_3_saturday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sunday</td>
+                                            <td>{{ form.service_3_sunday_hours(size=5, class = "service_3_hrs_per_week") }}
+                                                {% for error in form.service_3_sunday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+
+                        <div class="div_table_service_3">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>No. of Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><p id="service_3_date_1"> </p> </td>
+                                        <td>{{ form.service_3_month_1_hrs(size=5, class = "service_3_dates") }}
+                                            {% for error in form.service_3_month_1_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_3_date_2"></p></td>
+                                        <td>{{ form.service_3_month_2_hrs(size=5, class = "service_3_dates") }}
+                                            {% for error in form.service_3_month_2_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_3_date_3"></p></td>
+                                        <td>{{ form.service_3_month_3_hrs(size=5, class = "service_3_dates") }}
+                                            {% for error in form.service_3_month_3_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_3_date_4"></p></td>
+                                        <td>{{ form.service_3_month_4_hrs(size=5, class = "service_3_dates") }}
+                                            {% for error in form.service_3_month_4_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_3_date_5"></p></td>
+                                        <td>{{ form.service_3_month_5_hrs(size=5, class = "service_3_dates") }}
+                                            {% for error in form.service_3_month_5_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_3_date_6"></p></td>
+                                        <td>{{ form.service_3_month_6_hrs(size=5, class = "service_3_dates") }}
+                                            {% for error in form.service_3_month_6_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Service 4</h3>
+            <div>
+                <div class="row">
+                    <div class="column left">
+                        <p>
+                            {{ form.service_4_name.label }}<br>
+                            {{ form.service_4_name(size=64, class = "name") }}<br>
+                            {% for error in form.service_4_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_4_price.label }}<br>
+                            {{ form.service_4_price(size=32) }}<br>
+                            {% for error in form.service_4_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_4_discount_value.label }}<br>
+                            {{ form.service_4_discount_value(size=32) }}<br>
+                            {% for error in form.service_4_discount_value.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_4_count.label }}<br>
+                            {{ form.service_4_count(size=32) }}
+                            {% for error in form.service_4_count.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_4_final_price.label }}<br>
+                            {{ form.service_4_final_price(size=32, class = "finalprice") }}
+                            {% for error in form.service_4_final_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_4_note.label }}<br>
+                            {{ form.service_4_note(size=65) }}
+                            {% for error in form.service_4_note.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_4_teacher_name.label }}<br>
+                            {{ form.service_4_teacher_name(size = 70) }}
+                            {% for error in form.service_4_teacher_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_4_office.label }}<br>
+                            {{ form.service_4_office() }}
+                            {% for error in form.service_4_office.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_4_refund_flag.label }} <br>
+                            {{ form.service_4_refund_flag(class="selector") }}
+                            {% for error in form.service_4_refund_flag.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+
+                        <div class="service_4_refund">
+                            <p>
+                                {{ form.service_4_refund_status.label }} <br>
+                                {{ form.service_4_refund_status() }}
+                                {% for error in form.service_4_refund_status.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_credit_note_service_4">
+                                <p>
+                                    {{ form.service_4_credit_note_number.label }} <br>
+                                    {{ form.service_4_credit_note_number() }}
+                                    {% for error in form.service_4_credit_note_number.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            
+
+                            <p>
+                                {{ form.service_4_refund_amount.label }} <br>
+                                {{ form.service_4_refund_amount() }}
+                                {% for error in form.service_4_refund_amount.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <p>
+                                {{ form.service_4_refund_date.label }} <br>
+                                {{ form.service_4_refund_date() }}
+                                {% for error in form.service_4_refund_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="column right">
+                        <p>
+                            {{ form.service_4_amortization_type.label() }}<br>
+                            {{ form.service_4_amortization_type() }}
+                            {% for error in form.service_4_amortization_type.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <div class="div_dates_service_4">
+                            <p>
+                                {{ form.service_4_start_date.label(class = "service_4_dates") }}<br>
+                                {{ form.service_4_start_date(size=80, class = "service_4_dates") }}
+                                {% for error in form.service_4_start_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_end_date_service_4">
+                                <p>
+                                    {{ form.service_4_end_date.label(class = "service_4_dates") }}<br>
+                                    {{ form.service_4_end_date(size=80, class = "service_4_dates") }}
+                                    {% for error in form.service_4_end_date.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hours_per_week_service_4">
+                            <p>
+                                {{ form.service_4_total_hours.label(class = "service_4_hrs_per_week") }} <br>
+                                {{ form.service_4_total_hours(size=5, class = "service_4_hrs_per_week") }} <br> <br>
+                                {% for error in form.service_4_total_hours.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>No. of Hours</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Monday </td>
+                                            <td>{{ form.service_4_monday_hours(size=5, class = "service_4_hrs_per_week") }}
+                                                {% for error in form.service_4_monday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tuesday</td>
+                                            <td>{{ form.service_4_tuesday_hours(size=5, class = "service_4_hrs_per_week") }}
+                                                {% for error in form.service_4_tuesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wednesday</td>
+                                            <td>{{ form.service_4_wednesday_hours(size=5, class = "service_4_hrs_per_week") }}
+                                                {% for error in form.service_4_wednesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thursday</td>
+                                            <td>{{ form.service_4_thursday_hours(size=5, class = "service_4_hrs_per_week") }}
+                                                {% for error in form.service_4_thursday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Friday</td>
+                                            <td>{{ form.service_4_friday_hours(size=5, class = "service_4_hrs_per_week") }}
+                                                {% for error in form.service_4_friday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Saturday</td>
+                                            <td>{{ form.service_4_saturday_hours(size=5, class = "service_4_hrs_per_week") }}
+                                                {% for error in form.service_4_saturday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sunday</td>
+                                            <td>{{ form.service_4_sunday_hours(size=5, class = "service_4_hrs_per_week") }}
+                                                {% for error in form.service_4_sunday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+
+                        <div class="div_table_service_4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>No. of Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><p id="service_4_date_1"> </p> </td>
+                                        <td>{{ form.service_4_month_1_hrs(size=5, class = "service_4_dates") }}
+                                            {% for error in form.service_4_month_1_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_4_date_2"></p></td>
+                                        <td>{{ form.service_4_month_2_hrs(size=5, class = "service_4_dates") }}
+                                            {% for error in form.service_4_month_2_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_4_date_3"></p></td>
+                                        <td>{{ form.service_4_month_3_hrs(size=5, class = "service_4_dates") }}
+                                            {% for error in form.service_4_month_3_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_4_date_4"></p></td>
+                                        <td>{{ form.service_4_month_4_hrs(size=5, class = "service_4_dates") }}
+                                            {% for error in form.service_4_month_4_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_4_date_5"></p></td>
+                                        <td>{{ form.service_4_month_5_hrs(size=5, class = "service_4_dates") }}
+                                            {% for error in form.service_4_month_5_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_4_date_6"></p></td>
+                                        <td>{{ form.service_4_month_6_hrs(size=5, class = "service_4_dates") }}
+                                            {% for error in form.service_4_month_6_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Service 5</h3>
+            <div>
+                <div class="row">
+                    <div class="column left">
+                        <p>
+                            {{ form.service_5_name.label }}<br>
+                            {{ form.service_5_name(size=64, class = "name") }}<br>
+                            {% for error in form.service_5_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_5_price.label }}<br>
+                            {{ form.service_5_price(size=32, class = "name") }}<br>
+                            {% for error in form.service_5_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_5_discount_value.label }}<br>
+                            {{ form.service_5_discount_value(size=32) }}<br>
+                            {% for error in form.service_5_discount_value.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_5_count.label }}<br>
+                            {{ form.service_5_count(size=32) }}
+                            {% for error in form.service_5_count.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_5_final_price.label }}<br>
+                            {{ form.service_5_final_price(size=32, class = "finalprice") }}
+                            {% for error in form.service_5_final_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_5_note.label }}<br>
+                            {{ form.service_5_note(size=65) }}
+                            {% for error in form.service_5_note.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_5_teacher_name.label }}<br>
+                            {{ form.service_5_teacher_name(size = 70) }}
+                            {% for error in form.service_5_teacher_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_5_office.label }}<br>
+                            {{ form.service_5_office() }}
+                            {% for error in form.service_5_office.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_5_refund_flag.label }} <br>
+                            {{ form.service_5_refund_flag(class="selector") }}
+                            {% for error in form.service_5_refund_flag.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+
+                        <div class="service_5_refund">
+                            <p>
+                                {{ form.service_5_refund_status.label }} <br>
+                                {{ form.service_5_refund_status() }}
+                                {% for error in form.service_5_refund_status.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_credit_note_service_5">
+                                <p>
+                                    {{ form.service_5_credit_note_number.label }} <br>
+                                    {{ form.service_5_credit_note_number() }}
+                                    {% for error in form.service_5_credit_note_number.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            
+
+                            <p>
+                                {{ form.service_5_refund_amount.label }} <br>
+                                {{ form.service_5_refund_amount() }}
+                                {% for error in form.service_5_refund_amount.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <p>
+                                {{ form.service_5_refund_date.label }} <br>
+                                {{ form.service_5_refund_date() }}
+                                {% for error in form.service_5_refund_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="column right">
+                        <p>
+                            {{ form.service_5_amortization_type.label() }}<br>
+                            {{ form.service_5_amortization_type() }}
+                            {% for error in form.service_5_amortization_type.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <div class="div_dates_service_5">
+                            <p>
+                                {{ form.service_5_start_date.label(class = "service_5_dates") }}<br>
+                                {{ form.service_5_start_date(size=80, class = "service_5_dates") }}
+                                {% for error in form.service_5_start_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_end_date_service_5">
+                                <p>
+                                    {{ form.service_5_end_date.label(class = "service_5_dates") }}<br>
+                                    {{ form.service_5_end_date(size=80, class = "service_5_dates") }}
+                                    {% for error in form.service_5_end_date.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hours_per_week_service_5">
+                            <p>
+                                {{ form.service_5_total_hours.label(class = "service_5_hrs_per_week") }} <br>
+                                {{ form.service_5_total_hours(size=5, class = "service_5_hrs_per_week") }} <br> <br>
+                                {% for error in form.service_5_total_hours.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>No. of Hours</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Monday </td>
+                                            <td>{{ form.service_5_monday_hours(size=5, class = "service_5_hrs_per_week") }}
+                                                {% for error in form.service_5_monday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tuesday</td>
+                                            <td>{{ form.service_5_tuesday_hours(size=5, class = "service_5_hrs_per_week") }}
+                                                {% for error in form.service_5_tuesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wednesday</td>
+                                            <td>{{ form.service_5_wednesday_hours(size=5, class = "service_5_hrs_per_week") }}
+                                                {% for error in form.service_5_wednesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thursday</td>
+                                            <td>{{ form.service_5_thursday_hours(size=5, class = "service_5_hrs_per_week") }}
+                                                {% for error in form.service_5_thursday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Friday</td>
+                                            <td>{{ form.service_5_friday_hours(size=5, class = "service_5_hrs_per_week") }}
+                                                {% for error in form.service_5_friday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Saturday</td>
+                                            <td>{{ form.service_5_saturday_hours(size=5, class = "service_5_hrs_per_week") }}
+                                                {% for error in form.service_5_saturday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sunday</td>
+                                            <td>{{ form.service_5_sunday_hours(size=5, class = "service_5_hrs_per_week") }}
+                                                {% for error in form.service_5_sunday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+
+                        <div class="div_table_service_5">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>No. of Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><p id="service_5_date_1"> </p> </td>
+                                        <td>{{ form.service_5_month_1_hrs(size=5, class = "service_5_dates") }}
+                                            {% for error in form.service_5_month_1_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_5_date_2"></p></td>
+                                        <td>{{ form.service_5_month_2_hrs(size=5, class = "service_5_dates") }}
+                                            {% for error in form.service_5_month_2_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_5_date_3"></p></td>
+                                        <td>{{ form.service_5_month_3_hrs(size=5, class = "service_5_dates") }}
+                                            {% for error in form.service_5_month_3_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_5_date_4"></p></td>
+                                        <td>{{ form.service_5_month_4_hrs(size=5, class = "service_5_dates") }}
+                                            {% for error in form.service_5_month_4_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_5_date_5"></p></td>
+                                        <td>{{ form.service_5_month_5_hrs(size=5, class = "service_5_dates") }}
+                                            {% for error in form.service_5_month_5_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_5_date_6"></p></td>
+                                        <td>{{ form.service_5_month_6_hrs(size=5, class = "service_5_dates") }}
+                                            {% for error in form.service_5_month_6_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Service 6</h3>
+            <div>
+                <div class="row"> 
+                    <div class="column left">
+                        <p>
+                            {{ form.service_6_name.label }}<br>
+                            {{ form.service_6_name(size=64, class = "name") }}<br>
+                            {% for error in form.service_6_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_6_price.label }}<br>
+                            {{ form.service_6_price(size=32) }}<br>
+                            {% for error in form.service_6_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_6_discount_value.label }}<br>
+                            {{ form.service_6_discount_value(size=32) }}<br>
+                            {% for error in form.service_6_discount_value.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_6_count.label }}<br>
+                            {{ form.service_6_count(size=32) }}
+                            {% for error in form.service_6_count.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_6_final_price.label }}<br>
+                            {{ form.service_6_final_price(size=32, class = "finalprice") }}
+                            {% for error in form.service_6_final_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_6_note.label }}<br>
+                            {{ form.service_6_note(size=65) }}
+                            {% for error in form.service_6_note.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_6_teacher_name.label }}<br>
+                            {{ form.service_6_teacher_name(size = 70) }}
+                            {% for error in form.service_6_teacher_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_6_office.label }}<br>
+                            {{ form.service_6_office() }}
+                            {% for error in form.service_6_office.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            {{ form.service_6_refund_flag.label }} <br>
+                            {{ form.service_6_refund_flag(class="selector") }}
+                            {% for error in form.service_6_refund_flag.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+
+                        <div class="service_6_refund">
+                            <p>
+                                {{ form.service_6_refund_status.label }} <br>
+                                {{ form.service_6_refund_status() }}
+                                {% for error in form.service_6_refund_status.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_credit_note_service_6">
+                                <p>
+                                    {{ form.service_6_credit_note_number.label }} <br>
+                                    {{ form.service_6_credit_note_number() }}
+                                    {% for error in form.service_6_credit_note_number.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+
+                            <p>
+                                {{ form.service_6_refund_amount.label }} <br>
+                                {{ form.service_6_refund_amount() }}
+                                {% for error in form.service_6_refund_amount.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <p>
+                                {{ form.service_6_refund_date.label }} <br>
+                                {{ form.service_6_refund_date() }}
+                                {% for error in form.service_6_refund_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                        </div>
+                    </div>
+                    
+                    <div class="column right">
+                        <p>
+                            {{ form.service_6_amortization_type.label() }}<br>
+                            {{ form.service_6_amortization_type() }}
+                            {% for error in form.service_6_amortization_type.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+
+                        <div class="div_dates_service_6">
+                            <p>
+                                {{ form.service_6_start_date.label(class = "service_6_dates") }}<br>
+                                {{ form.service_6_start_date(size=80, class = "service_6_dates") }}
+                                {% for error in form.service_6_start_date.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </p>
+
+                            <div class="div_end_date_service_6">
+                                <p>
+                                    {{ form.service_6_end_date.label(class = "service_6_dates") }}<br>
+                                    {{ form.service_6_end_date(size=80, class = "service_6_dates") }}
+                                    {% for error in form.service_6_end_date.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hours_per_week_service_6">
+                            <p>
+                                {{ form.service_6_total_hours.label(class = "service_6_hrs_per_week") }} <br>
+                                {{ form.service_6_total_hours(size=5, class = "service_6_hrs_per_week") }} <br> <br>
+                                {% for error in form.service_6_total_hours.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>No. of Hours</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Monday </td>
+                                            <td>{{ form.service_6_monday_hours(size=5, class = "service_6_hrs_per_week") }}
+                                                {% for error in form.service_6_monday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tuesday</td>
+                                            <td>{{ form.service_6_tuesday_hours(size=5, class = "service_6_hrs_per_week") }}
+                                                {% for error in form.service_6_tuesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wednesday</td>
+                                            <td>{{ form.service_6_wednesday_hours(size=5, class = "service_6_hrs_per_week") }}
+                                                {% for error in form.service_6_wednesday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thursday</td>
+                                            <td>{{ form.service_6_thursday_hours(size=5, class = "service_6_hrs_per_week") }}
+                                                {% for error in form.service_6_thursday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Friday</td>
+                                            <td>{{ form.service_6_friday_hours(size=5, class = "service_6_hrs_per_week") }}
+                                                {% for error in form.service_6_friday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Saturday</td>
+                                            <td>{{ form.service_6_saturday_hours(size=5, class = "service_6_hrs_per_week") }}
+                                                {% for error in form.service_6_saturday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sunday</td>
+                                            <td>{{ form.service_6_sunday_hours(size=5, class = "service_6_hrs_per_week") }}
+                                                {% for error in form.service_6_sunday_hours.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+
+                        <div class="div_table_service_6">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>No. of Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><p id="service_6_date_1"> </p> </td>
+                                        <td>{{ form.service_6_month_1_hrs(size=5, class = "service_6_dates") }}
+                                            {% for error in form.service_6_month_1_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_6_date_2"></p></td>
+                                        <td>{{ form.service_6_month_2_hrs(size=5, class = "service_6_dates") }}
+                                            {% for error in form.service_6_month_2_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_6_date_3"></p></td>
+                                        <td>{{ form.service_6_month_3_hrs(size=5, class = "service_6_dates") }}
+                                            {% for error in form.service_6_month_3_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_6_date_4"></p></td>
+                                        <td>{{ form.service_6_month_4_hrs(size=5, class = "service_6_dates") }}
+                                            {% for error in form.service_6_month_4_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_6_date_5"></p></td>
+                                        <td>{{ form.service_6_month_5_hrs(size=5, class = "service_6_dates") }}
+                                            {% for error in form.service_6_month_5_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p id="service_6_date_6"></p></td>
+                                        <td>{{ form.service_6_month_6_hrs(size=5, class = "service_6_dates") }}
+                                            {% for error in form.service_6_month_6_hrs.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <h3>Overall Discount Percentage/Value</h3>
+            <p>
+                {{ form.overall_discount.label }}<br>
+                {{ form.overall_discount(size=32) }}<br>
+                {% for error in form.overall_discount.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} 
+            </p>
+            
+            <p>
+                {{ form.total_value.label }}<br>
+                {{ form.total_value(size=32) }}<br>
+                {% for error in form.total_value.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} 
+            </p>
+
+            <h3>This-time Payment & Credit Information</h3>
+
+            <p>
+                {{ form.this_time_payment.label }}<br>
+                {{ form.this_time_payment(size=32) }}<br>
+                {% for error in form.this_time_payment.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} 
+            </p>
+
+            <p>
+                {{ form.credit_outstanding.label }}<br>
+                {{ form.credit_outstanding(size=32) }}<br>
+                {% for error in form.credit_outstanding.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} 
+            </p>
+
+            <p>
+                {{ form.use_credit_flag.label }}<br>
+                {{ form.use_credit_flag(class="selector") }}
+            </p>
+
+            <div class="div_credit_spending">
+                <p>
+                    {{ form.credit_spending_amount.label }}<br>
+                    {{ form.credit_spending_amount(size=32) }}<br>
+                    {% for error in form.credit_spending_amount.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %} 
+                </p>
+            </div>
+
+            <h3>Remaining Outstanding From Last Time</h3>
+            <p>
+                {{ form.remaining_outstanding(size=32) }}<br>
+                {% for error in form.remaining_outstanding.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} 
+            </p>
+
+            
+            <h3>Payment Due Date</h3>
+            <p>
+                {{ form.due_date() }} <br>
+            </p>
+
+            <h3>Payment Method & Info</h3>
+            <p>
+                {{ form.payment_method.label }} <br>
+                {{ form.payment_method() }} <br>
+                {% for error in form.payment_method.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} 
+            </p>
+
+            <div class="div_card_info">
+                <fieldset>
+                    <legend>Card Section</legend>
+                    <div class="controlgroup">
+                        <p>
+                            {{ form.card_machine.label }} <br>
+                            {{ form.card_machine() }} <br>
+                            {% for error in form.card_machine.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %} 
+                        </p>
+
+                        <p>
+                            {{ form.card_issuer.label }}<br>
+                            {{ form.card_issuer() }}
+                            {% for error in form.card_issuer.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </fieldset>
+            </div>
+
+            <b>Payment Date & Time</b>
+            <p>
+                {{ form.payment_date() }} 
+                {% for error in form.payment_date.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} 
+            
+                {{ form.payment_time() }} <br>
+                {% for error in form.payment_time.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} 
+            </p>
+
+            
+
+            <h3>To-be-generated Documents</h3>
+            <p>
+                {{ form.generate_invoice_flag.label }}
+                {{ form.generate_invoice_flag(class="selector") }} &nbsp;
+            
+                {{ form.generate_receipt_flag.label }}
+                {{ form.generate_receipt_flag(class="selector") }}
+            </p>
+            
+            <h3>Transaction Status Flags</h3>
+            <p>
+                {{ form.cancel_flag.label }}
+                {{ form.cancel_flag(class="selector") }} &nbsp;
+            
+                {{ form.complete_flag.label }}
+                {{ form.complete_flag(class="selector") }} <br>
+
+                {{ form.refund_amount.label( class = "refund" )}}
+                {{ form.refund_amount(class = "refund") }}
+            </p>
+            
+            <h3>Note</h3>
+            <p>
+                {{ form.note(id="note_area", cols=100, rows=4) }}<br>
+                {% for error in form.note.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            
+            <input type="submit" name = "submit" value="Submit"> &nbsp;
+            <input type="submit" name = "preview" value="Preview"> &nbsp;
+            <input type="reset">
+
+        </form>
+    
+    {% if qir_numbers %}
+        <h2> Prior Documents </h2>
+        {% set have_quotation_flag = namespace(found=false) %}
+        {% set have_invoice_flag = namespace(found=false) %}
+        {% set have_vat_receipt_flag = namespace(found=false) %}
+        {% set have_receipt_flag = namespace(found=false) %}
+
+        {% for each_qir in qir_numbers %}
+            {% if each_qir.code_type == 'Q' %}
+                {% set have_quotation_flag.found = true %}
+            {% endif %}
+
+            {% if each_qir.code_type == 'I' %}
+                {% set have_invoice_flag.found = true %}
+            {% endif %}
+
+            {% if each_qir.code_type == 'T' %}
+                {% set have_vat_receipt_flag.found = true %}
+            {% endif %}
+
+            {% if each_qir.code_type == 'R' %}
+                {% set have_receipt_flag.found = true %}
+            {% endif %}
+        {% endfor %}
+
+        {% if have_quotation_flag.found %}
+            <h3> Quotation </h3>
+            <div class="table-responsive">
+                <table id='quotation' class="table table-bordered table-hover" style="width:100%">
+                    <tr>
+                        <th>Created Date</th>
+                        <th>Creating User</th>
+                        <th>Document Code</th>
+                        <th>Download Link</th>
+                    </tr>
+                    {% for each_qir in qir_numbers %}
+                        {% if each_qir.code_type == 'Q' %}
+                            <tr>
+                                <td> {{ each_qir.date_created | shortdatefilter }} </td>
+                                <td> {{ each_qir.creating_user }} </td>
+                                <td> {{ each_qir.code_number }} </td>
+                                <td> <a href= "/uploads/{{each_qir.code_number}}"> Download </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+        {% if have_invoice_flag.found %}
+            <h3> Invoice </h3>
+            <div class="table-responsive">
+                <table id='quotation' class="table table-bordered table-hover" style="width:100%">
+                    <tr>
+                        <th>Created Date</th>
+                        <th>Creating User</th>
+                        <th>Document Code</th>
+                        <th>Download Link</th>
+                    </tr>
+                    {% for each_qir in qir_numbers %}
+                        {% if each_qir.code_type == 'I' %}
+                            <tr>
+                                <td> {{ each_qir.date_created | shortdatefilter }} </td>
+                                <td> {{ each_qir.creating_user }} </td>
+                                <td> {{ each_qir.code_number }} </td>
+                                <td> <a href= "/uploads/{{each_qir.code_number}}"> Download </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+        {% if have_vat_receipt_flag.found %}
+            <h3> VAT Receipt </h3>
+            <div class="table-responsive">
+                <table id='quotation' class="table table-bordered table-hover" style="width:100%">
+                    <tr>
+                        <th>Created Date</th>
+                        <th>Creating User</th>
+                        <th>Document Code</th>
+                        <th>Download Link</th>
+                    </tr>
+                    {% for each_qir in qir_numbers %}
+                        {% if each_qir.code_type == 'T' %}
+                            <tr>
+                                <td> {{ each_qir.date_created | shortdatefilter }} </td>
+                                <td> {{ each_qir.creating_user }} </td>
+                                <td> {{ each_qir.code_number }} </td>
+                                <td> <a href= "/uploads/{{each_qir.code_number}}"> Download </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+        {% if have_receipt_flag.found %}
+            <h3> Receipt </h3>
+            <div class="table-responsive">
+                <table id='quotation' class="table table-bordered table-hover" style="width:100%">
+                    <tr>
+                        <th>Created Date</th>
+                        <th>Creating User</th>
+                        <th>Document Code</th>
+                        <th>Download Link</th>
+                    </tr>
+                    {% for each_qir in qir_numbers %}
+                        {% if each_qir.code_type == 'R' %}
+                            <tr>
+                                <td> {{ each_qir.date_created | shortdatefilter }} </td>
+                                <td> {{ each_qir.creating_user }} </td>
+                                <td> {{ each_qir.code_number }} </td>
+                                <td> <a href= "/uploads/{{each_qir.code_number}}"> Download </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+    
+    {% if accounting_records %}
+    <hr>
+    <h2> Prior Amortization Records </h2>
+    <div class="table-responsive">
+        <table id="amortization" class="table table-bordered table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Created Time</th>
+                    <th>Receipt Number</th>
+                    <th>Service Name</th>
+                    <th>Value</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for each_accounting_record in accounting_records %}
+            <tr>
+                <td> {{ each_accounting_record.date_created | datetimefilter }} </td>
+                <td> {{ each_accounting_record.code_number }} </td>
+                <td> {{ each_accounting_record.service }} </td>
+                <td> {{ each_accounting_record.total_amount }} </td>
+                <td> <a href="/amortization_edit/{{each_accounting_record.id}}" class="btn btn-primary btn-sm">Edit</a> </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    
+    
+    </section>
+{% endblock %}

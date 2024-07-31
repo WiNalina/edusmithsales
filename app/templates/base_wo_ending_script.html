@@ -1,0 +1,94 @@
+<html>
+    <head>
+
+        <style>
+            * {
+              box-sizing: border-box;
+            }
+            
+            /* Create two unequal columns that floats next to each other */
+            .column {
+              float: left;
+              padding: 10px;
+            }
+            
+            .left {
+              width: 60%;
+            }
+            
+            .right {
+              width: 40%;
+            }
+            
+            /* Clear floats after the columns */
+            .row:after {
+              content: "";
+              clear: both;
+            }
+        </style>
+        {% extends 'bootstrap_base_wo_script.html' %}
+        {% block scripts %}
+        {% endblock %}
+
+        {% block title %}
+            {% if title %}
+            {{ title }} - EduSmith
+            {% else %}
+            EduSmith - Sales Team Website
+            {% endif %}
+        {% endblock %}
+        
+
+    </head>
+
+    <body>
+        {% block navbar %}
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ url_for('main.index') }}">EduSmith - Sales</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                            <li><a href="https://datastudio.google.com/reporting/fd4edd38-5f3b-40e0-bf21-51546c215b64">Sales Dashboard</a></li>
+                            <li><a href="https://docs.google.com/spreadsheets/d/1l0oyM0g6fINgq4Ts9-8dATP4br_GKDjy4TWRxDT8ruc/edit?usp=sharing">Sales Records</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if current_user.is_anonymous %}
+                            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                            {% else %}
+                            <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
+                            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        {% endblock %}
+
+        {% block content %}
+            <div class='container'>
+                <hr>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                            <div class="alert alert-info" role="alert">{{ message }}</div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                
+                {% block app_content %}{% endblock %}
+            </div>
+        {% endblock %}
+        
+    </body>
+</html>

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <style> 
+        input[name=excel]{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        input[name=receipt]{
+            background-color: #b32531;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        input[name=invoice]{
+            background-color: #d4d258;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+
+    <h1>Please select the dates for downloading the sales & accounting records. </h1><br>
+    <form class="form-inline" action="" method="{{ method | d("POST") }}">
+        {{ form.hidden_tag() }}
+        
+        <b>Choose Starting Date: </b>
+        {{ form.start_date_select }} &nbsp
+        {% for error in form.start_date_select.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %} &nbsp;
+
+        <b>Choose Ending Date:</b>
+        {{ form.end_date_select }} &nbsp
+        {% for error in form.end_date_select.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %} <br> <br>
+
+        <input type="submit" name = "excel" value="Download Excel File"> &nbsp;
+        <input type="submit" name = "receipt" value="Download Receipts"> &nbsp;
+        <input type="submit" name = "invoice" value="Download VAT Receipts"> &nbsp;
+        
+    </form>
+    
+{% endblock %}

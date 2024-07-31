@@ -1,0 +1,131 @@
+{% extends "base_wo_ending_script.html" %}
+
+{% block app_content %}
+
+    {% block scripts %}
+    
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script>
+        $(document).ready(function(){
+            var student_array=[];
+            var credit_array=[];
+
+            function loadStudents(){
+                $.ajax({
+                url: '/students_local',
+                dataType: 'json',
+                success: function(data){
+                    console.log(data)
+                    for (var i = 0; i < data.length; i++ ) {
+                    student_array.push(data[i].name);
+                    credit_array.push(data[i].credit_value);
+                    }
+                }
+                })
+            };
+            
+            loadStudents();
+            
+            
+            $(function() {
+                $.ajax({
+                    url: '{{ url_for("main.students_local") }}'
+                    }).done(function (data) {
+                        $('#sender_name').autocomplete({
+                            source: student_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fill_sender_outstanding(val);
+                            }
+                        });
+
+                        $('#recipient_name').autocomplete({
+                            source: student_array,
+                            select: function( event, ui ) {
+                                var val = ui.item['value'];
+                                fill_recipient_outstanding(val);
+                            }   
+                        });
+                    });
+            });
+                
+            
+            function fill_sender_outstanding(val) {
+                var index = $.inArray( val, student_array );
+                $('input#sender_outstanding').val(credit_array[index]);
+            }
+
+            function fill_recipient_outstanding(val) {
+                var index = $.inArray( val, student_array );
+                $('input#recipient_outstanding').val(credit_array[index]);
+            }
+        });
+            
+        </script>
+    {% endblock %}
+
+<h1>Credit Transfer</h1>
+<section>
+    <form class="form-inline" action="" method="{{ method | d("POST") }}">
+        {{ form.hidden_tag() }}
+        
+        <div>
+            <div class="row">
+                <div class="column left">
+                    <p>
+                        {{ form.sender_name.label }}<br>
+                        {{ form.sender_name(size=30) }}<br>
+                        {% for error in form.sender_name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+            
+                    <p>
+                        {{ form.sender_outstanding.label }}<br>
+                        {{ form.sender_outstanding(size=10) }}<br>
+                        {% for error in form.sender_outstanding.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+
+                    <h3>Transfer Amount</h3>
+                    <p>
+                        {{ form.transfer_amount(size=10) }}<br>
+                        {% for error in form.transfer_amount.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    
+                    {{ form.submit() }}
+                </div>
+
+                <div class="column right">
+                    <p>
+                        {{ form.recipient_name.label }}<br>
+                        {{ form.recipient_name(size=30) }}<br>
+                        {% for error in form.recipient_name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+            
+                    <p>
+                        {{ form.recipient_outstanding.label }}<br>
+                        {{ form.recipient_outstanding(size=10) }}<br>
+                        {% for error in form.recipient_outstanding.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+    </form>
+
+
+</section>
+
+{% endblock %}
