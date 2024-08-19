@@ -49,12 +49,12 @@ load_dotenv(os.path.join(basedir, '.env'))
 
 class Config(object):
     #Secret key used for resetting passwords
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'f2e21dd86c6089e8f8522516dfacd82ab559786e2f70c1a8'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'f2e21dd86c6089e8f8522516dfacd82ab559786e2f70c1a9'
     
     #SQLALCHEMY part
     #SQLALCHEMY database URL
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'postgres://gqfqdpxoymqnli:8c27488247ed12ea2c936518eb49990419f99aff68f73cc29302bba45fc38d6a@ec2-52-0-79-72.compute-1.amazonaws.com:5432/d4rkm1vmg5a35q'
+        'postgres://ua8uu8j50qs6j4:p9f6484f13f74aa8307e4b8959771017fb20e3aaf9dc3e44e17902992c92f1b48@ec2-3-225-30-246.compute-1.amazonaws.com:5432/d8k5456v2egpvr'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     #Mailing Information
@@ -75,7 +75,7 @@ class Config(object):
 
     #Elasticsearch server
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL') or \
-        'https://f66198ee91fc42d38aed9199a44d1301.us-east-1.aws.found.io'
+        'https://paas:b908ea5b21df2f5f6383ff7dd4463423@oin-us-east-1.searchly.com'
     
     #Upload & Preview Folder
     UPLOAD_FOLDER = 'upload'
